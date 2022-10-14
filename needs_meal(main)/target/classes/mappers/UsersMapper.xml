@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+	<insert id="insertMember" parameterType="users">
+		INSERT INTO users 
+		VALUES ( #{u_id} , #{u_pwd}, #{u_name}, #{u_email}, #{u_tell}, #{u_addr}, #{u_birth}, 0, 0 )
+	</insert>
+	<select id="loginCheck" parameterType="users" resultType="users">
+		SELECT count(*) "count"
+		  FROM users
+		  WHERE u_id = #{u_id} AND u_pwd = #{u_pwd}
+	</select>
+	<select id="loginInfo" parameterType="users" resultType="users">
+		SELECT *
+		  FROM users
+		  WHERE u_id = #{u_id} AND u_pwd = #{u_pwd}
+	</select>
+	
+	<select id="idCheck" parameterType="users" resultType="users">
+		SELECT count(*) "count"
+		  FROM users
+		  WHERE ( u_name = #{u_name} AND u_email = #{u_email} ) OR ( u_name = #{u_name} AND u_tell = #{u_tell} )
+	</select>
+	<select id="idFind" parameterType="users" resultType="users">
+		SELECT *
+		  FROM users
+		  WHERE ( u_name = #{u_name} AND u_email = #{u_email} ) OR ( u_name = #{u_name} AND u_tell = #{u_tell} )
+	</select>
+	<select id="passCheck" parameterType="users" resultType="users">
+		SELECT count(*) "count"
+		  FROM users
+		  WHERE u_id = #{u_id} AND u_email = #{u_email} AND u_tell = #{u_tell} 
+	</select>
+	<select id="passFind" parameterType="users" resultType="users">
+		SELECT *
+		  FROM users
+		  WHERE u_id = #{u_id} AND u_email = #{u_email} AND u_tell = #{u_tell} 
+	</select>
+	
+	<update id="passModify" parameterType="users">
+		UPDATE USERS
+		   SET u_pwd = #{u_pwd}
+		 WHERE u_id = #{u_id}
+	
+	</update>
+	
+	
+
+	
+	
+	
+</mapper>
+
+
+
+

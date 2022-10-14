@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.human.project.domain.MealVO" alias="meal"/>
+		<typeAlias type="com.human.project.domain.ItemVO" alias="item"/>
+		<typeAlias type="com.human.project.domain.EventVO" alias="event"/>
+		<typeAlias type="com.human.project.domain.CommunityVO" alias="commu"/>
+		<typeAlias type="com.human.project.domain.UsersVO" alias="users"/>	
+		<typeAlias type="com.human.project.domain.QnAVO" alias="qna"/>
+		<typeAlias type="com.human.project.domain.ReplayVO" alias="replay"/>
+		
+	</typeAliases>
+</configuration>

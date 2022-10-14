@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main">
+	<insert id="insertCommu" parameterType="commu">
+		INSERT INTO community
+		VALUES ( seq_commu.nextval , 'asdf' , #{ctg_id}, #{m_name}, #{c_title}, #{c_content}, 'none', 0,0, sysdate )
+	</insert>
+	<select id="selectCommu" resultType="commu">
+		select community.*,category.ctg_name 
+		  from community,category
+  	     where community.ctg_id = category.ctg_id
+  	     order by c_date desc
+	</select>
+	<select id="selectCommuCtg" parameterType="commu" resultType="commu">
+		select community.*,category.ctg_name 
+		  from community,category
+  	     where community.ctg_id = category.ctg_id
+  	       and community.ctg_id = #{ctg_id}
+  	       order by c_date desc
+	</select>
+	<select id="selectMeal" resultType="meal">
+		select * 
+		  from meal
+	</select>
+	<select id="selectMealCtg" resultType="meal">
+		SELECT * 
+		  FROM meal,category
+	  	 WHERE meal.ctg_id = category.ctg_id
+ 	       AND meal.ctg_id = #{ctg_id}
+ 	     ORDER by m_date desc
+	</select>
+	<select id="getMeal" parameterType="meal" resultType="meal">
+		SELECT *
+		  FROM meal
+		 WHERE m_name = #{m_name}
+	</select>
+	<select id="getItem" parameterType="item" resultType="item">
+		SELECT *
+		  FROM item
+		 WHERE i_id = #{i_id}
+	</select>
+	
+</mapper>

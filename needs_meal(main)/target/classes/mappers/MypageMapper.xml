@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mypage">
+	
+	<select id="mypage-replay" resultType="replay">
+		SELECT r_seq_id, r_content, r_date, u_id, c_id
+		FROM reply
+	</select>
+	
+	<select id="mypage-qna" resultType="qna">
+		SELECT q_date, q_id, q_title 
+		from QNA
+	</select>
+	
+	<update id="modifyAccount" parameterType="users">
+	
+		UPDATE users
+		   SET u_pwd = #{u_pwd}, u_name = #{u_name}, u_birth = #{u_birth}, u_email = #{u_email}, u_tell = #{u_tell}, u_addr = #{u_addr}
+		 WHERE u_id = #{u_id}
+	</update>
+	
+	
+	
+
+</mapper>

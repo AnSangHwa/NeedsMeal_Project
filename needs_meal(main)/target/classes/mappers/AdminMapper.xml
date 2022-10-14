@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+	<insert id="insertItem" parameterType="item">
+		INSERT INTO item
+		VALUES ( #{i_id} , #{ctg_id}, #{i_name}, #{i_weight}, 0, #{i_stock_cnt}, #{i_price}, sysdate )
+	</insert>
+	<select id="selectItem" resultType="item">
+		SELECT *
+		  FROM item
+	</select>
+	<select id="selectItemOne" parameterType="item" resultType="item">
+		SELECT *
+		  FROM item
+		 WHERE i_name = #{i_name}
+	</select>
+	<delete id="deleteItem" parameterType="item">
+		DELETE item
+		WHERE i_name = #{i_name}
+	</delete>
+	<update id="updateItem" parameterType="item">
+		UPDATE item
+  		   SET i_weight = #{i_weight}, i_stock_cnt = #{i_stock_cnt}, i_price = #{i_price}
+  		 WHERE i_name = #{i_name} 
+	</update>
+	<insert id="insertMeal" parameterType="meal">
+		INSERT INTO meal
+		VALUES ( #{m_name}, #{ctg_id}, #{i_id_req}, #{i_id_base}, 0, #{m_stock}, #{m_price}, #{m_content}, 0, 0, sysdate )
+	</insert>
+	<select id="selectMeal" resultType="meal">
+		SELECT *
+		  FROM meal
+	</select>
+	<select id="selectMealOne" parameterType="meal" resultType="meal">
+		SELECT *
+		  FROM meal
+		 WHERE m_name = #{m_name}
+	</select>
+
+	<update id="updateMeal" parameterType="meal">
+  		   UPDATE meal
+      		  SET i_id_base = #{i_id_base} , m_stock = #{m_stock}
+         <if test="m_content != null">, m_content = #{m_content}</if>  , m_price = #{m_price}
+        	WHERE m_name = #{m_name}
+  	</update>
+  	<delete id="deleteMeal" parameterType="meal">
+  		DELETE meal
+  		WHERE m_name = #{m_name}
+  	</delete>
+  	<insert id="insertEvent" parameterType="event">
+  		INSERT INTO event
+  		VALUES ( #{e_name}, #{e_content}, sysdate, sysdate+7, 7)
+  	</insert>
+</mapper>
