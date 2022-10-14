@@ -1,0 +1,53 @@
+DROP TABLE orderlist;
+
+CREATE TABLE Orders (
+	o_id	number(12)		NOT NULL,
+	m_name	varchar2(90)		NOT NULL,
+	u_id	varchar2(30)		NOT NULL,
+	o_cnt	number		NOT NULL,
+	o_price	number		NOT NULL,
+	o_status	number		NOT NULL,
+	o_date	date		NOT NULL
+);
+
+CREATE TABLE OrderList (
+	ol_id	number(12)		NOT NULL,
+	o_id	number(12)		NOT NULL,
+	m_name	varchar2(90)		NOT NULL,
+	u_id	varchar2(30)		NOT NULL,
+	ol_name	varchar2(20)		NOT NULL,
+	ol_addr	varchar2(100)		NOT NULL,
+	ol_tell	varchar2(11)		NOT NULL,
+	ol_content	varchar2(150)		NULL
+);
+
+
+
+
+ALTER TABLE Orders ADD CONSTRAINT PK_ORDERS PRIMARY KEY (
+	o_id,
+	m_name,
+	u_id
+);
+
+
+
+ALTER TABLE OrderList ADD CONSTRAINT PK_ORDERLIST PRIMARY KEY (
+	ol_id,
+	o_id
+);
+
+ALTER TABLE Orders ADD CONSTRAINT FK_Meal_TO_Orders_1 FOREIGN KEY (
+	m_name
+)
+REFERENCES Meal (
+	m_name
+);
+
+ALTER TABLE Orders ADD CONSTRAINT FK_Users_TO_Orders_1 FOREIGN KEY (
+	u_id
+)
+REFERENCES Users (
+	u_id
+);
+
