@@ -124,4 +124,11 @@ public class UsersController {
 		return "05_passFind";
 	}
 	
+	@RequestMapping("logOut.do")
+	public String logOut(HttpSession session) {
+		
+		session.invalidate();
+		
+		return "01_main";
+	}
 }

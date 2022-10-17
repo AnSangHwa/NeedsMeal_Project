@@ -14,12 +14,12 @@
 		
 		    <div class="core_element">
         <H1 class="head_word">상품후기</H1>
-        <div class="review_title">맛있고 간편한데 좀 느끼해요 ㅠㅠ</div>
+        <div class="review_title">${reView.c_title}</div>
         <div class="review_info">
-            <span class="buyer_type">네이버페이 구매자</span><span
+            <span class="buyer_type">${reView.u_id}</span><span
                 class="review_word_divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><span
-                class="review_generated_time">2022.09.16 23:28:04</span><span
-                class="review_count_marker">조회수</span><span class="review_count">10</span>
+                class="review_generated_time">${reView.c_date}</span><span
+                class="review_count_marker">조회수</span><span class="review_count">${reView.c_cnt}</span>
         </div>
         <div class="review_product_info row">
             <div class="col-md-2">
@@ -34,13 +34,13 @@
                 </div>
             </div>
         </div>
-        <div class="main_review">맛있고 간편한데 좀 느끼해요 ㅠㅠ</div>
+        <div class="main_review">${reView.c_content}</div>
         <div class="comment_count_area">
             <span class="comment_count_marker">총 댓글&nbsp;</span><span class="comment_count">0</span>
         </div>
         <br> <input class="comment_area" type="text" placeholder="로그인을 하셔야 댓글을 등록하실 수 있습니다." name="(미정된_사항)"></input>
         <br>
-        <input class="btn_to_go_to_list" type="button" value="목록" name="미정된_사항"></input>
+        <input class="btn_to_go_to_list" type="button" value="목록" onclick="location.href = '02_productReview.do'"></input>
     </div>
         <jsp:include page="00_footer.jsp"></jsp:include>
     </body>

@@ -137,19 +137,22 @@
 								<table class="side-tb">
                                     <tr class="good-login" style="display: none">
                                         <td>
-                                            <a href="02_MyPage.do"><img src="images/3등급.png" style="width: 80px; height: 80px;"></a>
+                                            <a href="02_MyPage.do"><img src="images/${u_grade}등급.jpg" style="width: 80px; height: 80px;"></a>
                                         </td>
                                         <td>
-                                            	김익명님이<br> 접속하셨습니다.
+                                            	<strong>${u_name}</strong> 님이 <br> 접속하셨습니다.
                                             <a href="02_MyPage.do"><button class="btn btn-my-page">마이페이지</button></a>
-                                            <button class="btn log-out">로그아웃</button>
+                                            <button id="logOutBtn" class="btn log-out" onclick="location.href = 'logOut.do'">로그아웃</button>
                                         </td>
                                      </tr>
-                                     <tr class="not-login">
- 										<td> 
-                                            	로그인을<br> 하지 않았습니다.
-                                            <a class="go-log-in" href=05_login.do><button class="btn">로그인</button></a>
+                                     <tr class="not-login" >
+ 										<td style="padding-left: 30px;"> 
+                                            	로그인을<br> 하지 않았습니다.<br>
                                         </td>
+                                           <td>
+                                           
+                                            <a class="go-log-in" href="05_login.do"><button class="btn">로그인</button></a>
+                                           </td>
                                     </tr>
                                 </table>
 
@@ -160,7 +163,7 @@
                                         <a href="03_paymentForm.do"><img src="./images/주문하기.png" style="width: 80px; height: 80px;"></a>
                                     </li>
                                     <li>
-                                        <a href="02_QnAForm.do"><button class="btn btn-primary">1:1문의</button></a>
+                                          <a href="02_QnAForm.do"><button class="btn btn-primary">1:1문의</button></a>
                                         <a href="02_productQnAList.do"><button class="btn btn-primary">고객센터</button></a>
                                     </li>
                                     <li>
@@ -175,9 +178,9 @@
 							<!-- ---여기가 사이드바------------------------------------------------------------------------------------ -->
 							<div class="My-side">
 								<div class="right-sidebar-toggle bg-primary mt-3">
-									<a class="side-menu" href="#">
-										<p>X</p>
-									</a>
+									
+										<strong style="color:black;">&lt; &gt;</strong>
+									
 								</div>
 							</div>
 						</div>
@@ -194,7 +197,28 @@
 
 	<!-- End Main Top -->
 	<!-- 여기까지 헤더---------------------------------------------------------------------------------------------------- -->
-
-	
 </body>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script>
+	
+	let session = "${u_name}";
+	if(session != ""){
+		$('.good-login').attr("style","display: block");
+		$('.not-login').attr("style","display: none");
+		$('.login-box a button').attr("style","display: none");
+		$('.login-box a button').text("");
+		$('.login-box a').text("안녕하세요!"+"  "+session+" 님");
+		$('.login-box a').attr("href","")
+	}else{
+				
+		$('.good-login').attr("style","display: none");
+		$('.not-login').attr("style","display: block");
+		$('.login-box a button').attr("style","display: block");
+		$('.login-box a button').text("로그인");
+		
+		
+	}
+	
+	
+	</script>
 </html>

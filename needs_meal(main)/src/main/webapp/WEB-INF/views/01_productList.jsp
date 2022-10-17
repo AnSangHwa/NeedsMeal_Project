@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="com.human.project.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,12 +58,14 @@
                                         <a class="list-group-item commu list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">재료</a>
                                         <div class="collapse" id="sub-men2" data-parent="#list-group-men">
                                             <div class="list-group">
-                                                <a href="#" class="list-group-item list-group-item-action"> 채소 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 수산 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 육류 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 소스/육수 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 밑반찬 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 간식 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2001" class="list-group-item list-group-item-action"> 채소 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2002" class="list-group-item list-group-item-action"> 수산 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2003" class="list-group-item list-group-item-action"> 육류 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2004" class="list-group-item list-group-item-action"> 소스/육수 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2005" class="list-group-item list-group-item-action"> 밑반찬 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2006" class="list-group-item list-group-item-action"> 간식 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2007" class="list-group-item list-group-item-action"> 면 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2008" class="list-group-item list-group-item-action"> 그외 </a>
                                             </div>
                                         </div>
                                     </div>

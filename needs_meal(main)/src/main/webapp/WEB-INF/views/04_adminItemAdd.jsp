@@ -25,8 +25,21 @@
                     <input class="btn_product_name btn_mealkit_name dark_grey_btn" type="text" placeholder="상품명" name="i_name"></input>
                 </div>
                 <div>
-                    <input class="btn_category_code dark_grey_btn" type="text" placeholder="카테고리코드"
-                        name="ctg_id"></input>
+                	<select class="btn_product_name btn_mealkit_name dark_grey_btn select-ctg">
+                		<option value="2000">카테고리코드</option>
+                		<option value="2001">채소</option>
+                		<option value="2002">수산</option>
+                		<option value="2003">육류</option>
+                		<option value="2004">소스</option>
+                		<option value="2005">밑반찬</option>
+                		<option value="2006">간식</option>
+                		<option value="2007">면</option>
+                		<option value="2008">그외</option>
+                	</select>    
+                </div>
+                <div>
+                    <input id="insert-ctg" type="hidden" placeholder="카테고리코드"
+                        name="ctg_id" value="2000"></input>
                 </div>
                 <div>
                     <input class="btn_category_code dark_grey_btn" type="text" placeholder="무게"
@@ -41,7 +54,7 @@
                         name="i_price"></input>
                 </div>
                 <div>
-                    <input class="btn_to_addtion" id="admin-sub" type="submit" value="추가"></input>
+                    <input class="btn_to_addtion" id="admin-sub" type="submit" style="text-align: center;" value="추가"></input>
                     <input class="btn_to_deletion" type="reset" value="취소"></input>
                 </div>
             </div>
@@ -53,48 +66,17 @@
           
         </div>
         
-<!--         <div class="area_right"> -->
-<!--             <div class="text_style_head">재료 리스트</div> -->
-<!--             <br> -->
-<!--             <table> -->
-<!--                 <thead> -->
-<!--                 <tr> -->
-<!--                     <th class="table_head th_">재료코드</th> -->
-<!--                     <th class="table_head th_">재료명</th> -->
-<!--                     <th class="table_head th_">카테고리</th> -->
-<!--                     <th class="table_head th_">무게</th> -->
-<!--                     <th class="table_head th_">재고수량</th> -->
-<!--                     <th class="table_head th_">가격<br>(원)</th> -->
-<!--                     <th class="table_head th_">선택</th> -->
-<!--                 </tr> -->
-<!--                 </thead> -->
-<!--                 <tbody> -->
-<!--                 <tr> -->
-<!--                     <td>맛있는 불고기</td> -->
-<!--                     <td>1</td> -->
-<!--                     <td>s001s003...</td> -->
-<!--                     <td>s005s007...</td> -->
-<!--                     <td>30</td> -->
-<!--                     <td>8000</td> -->
-<!--                     <td class="btn_selection_container"><input class="btn_selection" type="radio" value="미정"></td> -->
-<!--                 </tr>  -->
-<!--                 <tr> -->
-<!--                     <td></td> -->
-<!--                     <td></td> -->
-<!--                     <td></td> -->
-<!--                     <td></td> -->
-<!--                     <td></td> -->
-<!--                     <td></td> -->
-<!--                     <td></td> -->
-<!--                 </tr>  -->
-<!--                 </tbody> -->
-<!--             </table>  -->
-<!--         </div> -->
+		<jsp:include page="04_adminItemView2.jsp"></jsp:include>
     </section>
 </form>
  
 
  
 </body>
-
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+     <script src="js/meal.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </html>

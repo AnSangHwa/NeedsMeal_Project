@@ -60,32 +60,39 @@
                 </div>
 
                 <div class="info-QnA-Write">                    
-                    <input type="button" value="1 : 1 문의하기 ">
+                    <input type="button" value="1 : 1 문의하기 " onclick="location.href= '02_QnAForm.do'">
                 </div>
 
 
                 <div class="QnA-tb">
-                    <table class="QnA-table">
+                    <table class="QnA-table" >
+                         <colgroup>
+					            <col width="10%">
+					            <col width="60%">
+					            <col width="30%">
+           
+        				</colgroup>
                         <thead class="QnA-table-header">
-                            <tr>
-                                <td>
-                                    문의날짜
-                                </td> 
-                                <td >                               
-                                    카테고리
-                                </td>
-                                <td >
-                                    제목
-                                </td>                             
-                            </tr>
+	                            <tr>
+	                                <td >
+	                                    문의번호
+	                                </td> 
+	                                <td >                               
+	                                    제목
+	                                </td>
+	                                <td >
+	                                    문의날짜
+	                                </td>                             
+	                            </tr>
+                         
                         </thead>
                        
                         <tbody>
                         <c:forEach items="${qnaList}" var="qna">
 						<tr>
-							<td>${qna.q_date }</td>
-							<td>${qna.q_id }</td>
-							<td>${qna.q_title }</td>						
+							<td>${qna.q_id}</td>
+							<td><a href="02_QnAView.do?q_id=${qna.q_id}">${qna.q_title }</a></td>
+							<td>${qna.q_date }</td>						
 						</tr>	
 						</c:forEach>	
 

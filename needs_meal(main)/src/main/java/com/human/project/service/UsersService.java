@@ -13,5 +13,6 @@ public interface UsersService {
 	public UsersVO passCheck(UsersVO vo);
 	public UsersVO passFind(UsersVO vo);
 	public void passModify(UsersVO vo);
+	
 }
  

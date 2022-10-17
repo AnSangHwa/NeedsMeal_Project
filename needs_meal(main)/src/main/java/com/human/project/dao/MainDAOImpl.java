@@ -24,8 +24,7 @@ public class MainDAOImpl implements MainDAO{
 
 	@Override
 	public List<ItemVO> getMainItemList() {
-		// TODO Auto-generated method stub
-		return null;
+		return mybatis.selectList("main.selectItem");
 	}
 
 	@Override
@@ -69,6 +68,17 @@ public class MainDAOImpl implements MainDAO{
 	@Override
 	public List<MealVO>  selectMealCtgList(MealVO mealvo) {
 		return mybatis.selectList("main.selectMealCtg",mealvo);
+	}
+
+
+	@Override
+	public List<MealVO> selectMealgetitemList(ItemVO itemvo) {
+		return mybatis.selectList("main.selectMealgetItem",itemvo);
+	}
+
+	@Override
+	public List<ItemVO> selectItemCtgList(ItemVO itemvo) {
+		return mybatis.selectList("main.selectItem_Ctg",itemvo);
 	}
 
 }

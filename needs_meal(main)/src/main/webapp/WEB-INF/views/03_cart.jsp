@@ -1,5 +1,9 @@
+<%@page import="com.human.project.domain.MealVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@page contentType="text/html; charset=UTF-8"%>
+<%@page import="com.human.project.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,39 +31,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <c:forEach items="${CartList}" var="meal">
                                 <tr id="cart1">
                                     <td class="thumbnail-img">
-                                        <a href="#"><img class="img-fluid" src="images/menu1.jpg" alt="" /></a>
+                                        <a href="#"><img class="img-fluid" src="images/imgMeal/${meal.m_name }.png" alt="" /></a>
                                     </td>
                                     <td class="name-pr">
-                                        <a href="#"><p name="item_name">밀푀유 나베</p></a>
+                                        <a href="#">${meal.m_name}</a>
                                     </td>
-                                    <td class="price-pr"><p>6000</p></td>
+                                    <td class="price-pr"><p>${meal.m_price}</p></td>
                                     <td class="quantity-box cart"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr"><p>6000</p></td>
-                                    <td class="remove-pr"><a href="#"><i class="fas fa-times"></i></a>
+                                    <td class="total-pr"><p>${meal.m_price}</p></td>
+                                    <td class="remove-pr"><a href="99_cart_delete.do?m_name=${meal.m_name }&m_price=${meal.m_price}&cart_cnt=${meal.cart_cnt }"><i class="fas fa-times"></i></a>
                                     </td>
-                                </tr>
-                                <tr id="cart2">
-                                    <td class="thumbnail-img">
-                                        <a href="#"><img class="img-fluid" src="images/img-pro-02.jpg" alt="" /></a>
-                                    </td>
-                                    <td class="name-pr"><a href="#">토마토</a></td>
-                                    <td class="price-pr"><p>3000</p></td>
-                                    <td class="quantity-box cart"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr"><p>3000</p></td>
-                                    <td class="remove-pr"><a href="#"><i class="fas fa-times"></i></a></td>
-                                </tr>
-                                <tr id="cart3">
-                                    <td class="thumbnail-img"><a href="#"><img class="img-fluid" src="images/img-pro-03.jpg" alt="" /></a>
-                                    </td>
-                                    <td class="name-pr"><a href="#">청포도</a></td>
-                                    <td class="price-pr"><p>4000</p></td>
-                                    <td class="quantity-box cart"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr"><p>4000</p></td>
-                                    <td class="remove-pr"><a href="#"><i class="fas fa-times"></i></a></td>
-                                </tr>
-                                
+                                </tr>		
+								</c:forEach>
                             </tbody>
                         </table> 
                     </div>                    

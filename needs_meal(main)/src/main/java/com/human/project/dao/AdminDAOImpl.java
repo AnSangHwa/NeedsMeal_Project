@@ -80,6 +80,11 @@ public class AdminDAOImpl implements AdminDAO {
 		
 	}
 
+	@Override
+	public List<ItemVO> getAdminItemCtgList(ItemVO itemvo) {
+		return mybatis.selectList("admin.selectItemCtg",itemvo);
+	}
+
 	
 	
 

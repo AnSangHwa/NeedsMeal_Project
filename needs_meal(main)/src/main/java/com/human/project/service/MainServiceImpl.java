@@ -24,8 +24,7 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	public List<ItemVO> getMainItemList() {
-		// TODO Auto-generated method stub
-		return null;
+		return mainDAO.getMainItemList();
 	}
  
 	@Override
@@ -69,6 +68,17 @@ public class MainServiceImpl implements MainService{
 	@Override
 	public List<MealVO>  selectMealCtgList(MealVO mealvo) {
 		return mainDAO.selectMealCtgList(mealvo);
+	}
+
+
+	@Override
+	public List<MealVO> selectMealgetitemList(ItemVO itemvo) {
+		return mainDAO.selectMealgetitemList(itemvo);
+	}
+
+	@Override
+	public List<ItemVO> selectItemCtgList(ItemVO itemvo) {
+		return mainDAO.selectItemCtgList(itemvo);
 	}
 
 	

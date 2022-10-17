@@ -12,6 +12,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT *
 		  FROM item
 	</select>
+	<select id="selectItemCtg" parameterType="item" resultType="item">
+  		SELECT *
+  		  FROM item
+  		 WHERE ctg_id = #{ctg_id}
+  	</select>
 	<select id="selectItemOne" parameterType="item" resultType="item">
 		SELECT *
 		  FROM item
@@ -54,4 +59,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		INSERT INTO event
   		VALUES ( #{e_name}, #{e_content}, sysdate, sysdate+7, 7)
   	</insert>
+  	
 </mapper>

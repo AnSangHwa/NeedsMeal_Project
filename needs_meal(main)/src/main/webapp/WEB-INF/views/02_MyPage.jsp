@@ -28,10 +28,10 @@
                     <div class = "my-info">
                     <ul>    
                         <li>
-                            <img src="images/grade/grade3.jpg">
+                            <img src="images/grade/grade${u_grade}.jpg">
                         </li>
                         <li>
-                            <h3>적립금 <a href="#" style="font-size: 50px;">3,000</a>원</h3>
+                            <h3>적립금 <a href="#" style="font-size: 50px;">${u_point}</a>원</h3>
                         </li>
                     </ul>
                     </div>

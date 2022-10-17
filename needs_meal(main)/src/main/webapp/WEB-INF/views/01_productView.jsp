@@ -4,12 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="com.human.project.*" %>
-<%  String req = request.getParameter("i_id_req");
-    String base = request.getParameter("i_id_base"); 
-    String[] reqArr = req.split("/");
-    String[] baseArr = base.split("/");
-    
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +74,7 @@
                                 <tbody>
 
 									<c:forEach items="${req}" var="item">
-                                     <tr id="req1" class="req"> 
+                                     <tr id="req${item.req_cnt }" class="req"> 
                                         <td class="name-pr">
 
                                            <a href="#"> ${item.i_name} </a>
@@ -112,7 +107,7 @@
                                 </thead>
                                 <tbody>
 									<c:forEach items="${base}" var="item">
-                                     <tr id="req1" class="req"> 
+                                     <tr id="base${item.base_cnt }" class="base"> 
                                         <td class="name-pr">
 
                                            <a href="#"> ${item.i_name} </a>
@@ -121,7 +116,7 @@
                                             <p> ${item.i_price} </p>
                                         </td> 
                                         <td class="quantity-box">
-                                        <input type="number" size="4" value="1" min="1" step="1" class="c-input-text qty text">
+                                        <input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text">
                                         </td>
                                         <td class="total-pr">
                                             <p> ${item.i_price}</p>
@@ -141,25 +136,26 @@
                                           
        
                                           <th class="total-pr" style="text-align: center;">
-                                              <span id="all-price">21000</span>원
+                                              <span id="all-price">${meal.m_price }</span>원
                                           </th>
-                                   
                                     </tr>
                                 </thead>
-                                
                             </table>
                         </div>
                         
                        
 
 						
-
+						<form action="99_go_cart.do" get="post">
 						<div class="price-box-bar" >
 							<div class="cart-and-bay-btn">
+								<input type="hidden" name="m_name" value="${meal.m_name }">
+								<input type="hidden" id="cart-price" name="m_price" value="${meal.m_price }">
 								<a class="btn hvr-hover" id="go-buy" href="03_paymentForm.do">구매하기</a>
 								<button type="submit" class="btn hvr-hover" style="height:44px; font-weight: bolder; color:white;">장바구니 담기</button>
 							</div>
 						</div>
+						</form>
 						
                     </div>
                 </div>
@@ -185,8 +181,7 @@
                         
 					</div>
 					<div>
-                        <h1>상품 상세 정보 적는 곳</h1>
-						<img src="images/test4.jpg">
+						<img src="images/imgMeal/${meal.m_name}1.png">
                     </div>
 				  </div>
             </div>

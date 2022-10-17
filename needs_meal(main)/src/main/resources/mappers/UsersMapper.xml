@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Member">
 	<insert id="insertMember" parameterType="users">
 		INSERT INTO users 
-		VALUES ( #{u_id} , #{u_pwd}, #{u_name}, #{u_email}, #{u_tell}, #{u_addr}, #{u_birth}, 0, 0 )
+		VALUES ( #{u_id} , #{u_pwd}, #{u_name}, #{u_email}, #{u_tell}, #{u_addr}, #{u_birth}, 1000, 1 )
 	</insert>
 	<select id="loginCheck" parameterType="users" resultType="users">
 		SELECT count(*) "count"

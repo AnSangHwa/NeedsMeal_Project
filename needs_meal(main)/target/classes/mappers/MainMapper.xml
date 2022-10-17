@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="main">
 	<insert id="insertCommu" parameterType="commu">
 		INSERT INTO community
-		VALUES ( seq_commu.nextval , 'asdf' , #{ctg_id}, #{m_name}, #{c_title}, #{c_content}, 'none', 0,0, sysdate )
+		VALUES ( seq_commu.nextval , #{u_id} , #{ctg_id}, #{m_name}, #{c_title}, #{c_content}, 'none', 0,0, sysdate )
 	</insert>
 	<select id="selectCommu" resultType="commu">
 		select community.*,category.ctg_name 
@@ -42,5 +42,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM item
 		 WHERE i_id = #{i_id}
 	</select>
-	
+	<select id="selectItem" resultType="item">
+		select * 
+		  from item
+	</select>
+	<select id="selectMealgetItem" parameterType="item" resultType="meal">
+		select * from meal,(select i_id from item where i_id = #{i_id}) item
+		 where i_id_req like '%'||(select i_id from item where i_id = #{i_id})||'%' 
+   		    or i_id_base like '%'||(select i_id from item where i_id = #{i_id})||'%'
+	</select>
+	<select id="selectItem_Ctg" parameterType="item" resultType="item">
+		SELECT *
+		  FROM item
+		 WHERE ctg_id = #{ctg_id}
+	</select>
 </mapper>

@@ -14,7 +14,8 @@ public class ItemVO {
     private int i_stock_cnt;   		// 재고수량      
     private int i_price; 			// 가격    
     private String i_date; 			// 생성일/수정일
-	
+	private int req_cnt;			// 밀키트 뷰에서 증가되는 필수 테이블 수치
+	private int base_cnt;			// 밀키트 뷰에서 증가되는 기본 테이블 수치
     /*
 	    카테코리 코드
 	    총 4자리로 구성
@@ -30,10 +31,11 @@ public class ItemVO {
 	  
 	  2000 : 재료
 	  2001 : 채소
-	  2002 : 육류
-	  2003 : 소스
-	  2004 : 육수
-	  2005 : 간식
+	  2002 : 수산
+	  2003 : 육류
+	  2004 : 소스
+	  2005 : 밑반찬
+	  2006 : 간식
 
 	  3000 : 자유게시판
 	  3001 : 잡담

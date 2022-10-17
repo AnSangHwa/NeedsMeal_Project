@@ -47,7 +47,7 @@
                         <thead class="Review-table-header">
                             <tr>
                                 <td>
-                                    번호
+                	게시글번호                  
                                 </td> 
                                 <td class="Review-table-title" >                               
                                     제목
@@ -59,19 +59,19 @@
                                     작성자
                                 </td>     
                                 <td>
-                                    조회
+                                    조회수
                                 </td>                     
                             </tr>
                         </thead>
                        
                         <tbody>
-						<c:forEach items="${replayList}" var="list">
+						<c:forEach items="${reviewList}" var="list">
 						<tr>
-							<td>${list.r_seq_id }</td>
-							<td>${list.r_content }</td>
-							<td>${list.r_date }</td>
+							<td>${list.ctg_id}</td>
+							<td><a href="01_eventView.do?ctg_id=${list.ctg_id}&c_id=${list.c_id}" >${list.c_title }</a></td>
+							<td>${list.c_date }</td>
 							<td>${list.u_id }</td>
-							<td>${list.c_id }</td>							
+							<td>${list.c_cnt }</td>							
 						</tr>						
 						</c:forEach>
 							

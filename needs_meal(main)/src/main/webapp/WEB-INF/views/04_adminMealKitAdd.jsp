@@ -1,5 +1,9 @@
+<%@page import="com.human.project.domain.ItemVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@page contentType="text/html; charset=UTF-8"%>
+<%@page import="com.human.project.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,16 +26,25 @@
                     <input class="btn_product_name btn_mealkit_name dark_grey_btn" type="text" placeholder="밀키트명" name="m_name"></input>
                     
                 </div>
-                <div>
-                    <input class="btn_category_code dark_grey_btn" type="text" placeholder="카테고리코드"
-                        name="ctg_id"></input>
+               <div>
+                	<select class="btn_product_name btn_mealkit_name dark_grey_btn select-ctg">
+                		<option value="1000">카테고리코드</option>
+                		<option value="1001">한식</option>
+                		<option value="1002">양식</option>
+                		<option value="1003">아시아</option>
+                		<option value="1004">분식/야식</option>
+                	</select>    
                 </div>
                 <div>
-                    <input class="btn_material_code_neccessary dark_grey_btn" type="text" placeholder="재료코드(필수)"
+                    <input id="insert-ctg" type="hidden" placeholder="카테고리코드"
+                        name="ctg_id" value="1000"></input>
+                </div>
+                <div>
+                    <input class="btn_material_code_neccessary dark_grey_btn" id="req-item" type="text" placeholder="재료코드(필수)"
                         name="i_id_req"></input>
                 </div>
                 <div>
-                    <input class="btn_material_code_basic dark_grey_btn" type="text" placeholder="재료코드(필수)"
+                    <input class="btn_material_code_basic dark_grey_btn" id="base-item" type="text" placeholder="재료코드(기본)"
                         name="i_id_base"></input>
                 </div>
                 <div>
@@ -39,7 +52,7 @@
                         name="m_stock"></input>
                 </div>
                 <div>
-                    <input class="btn_price dark_grey_btn" type="text" placeholder="가격"
+                    <input class="btn_price dark_grey_btn" type="text" id="meal-price" placeholder="가격"
                         name="m_price"></input>
                 </div>
                 <div>
@@ -55,11 +68,17 @@
             </div>    
         </div>
         </div>
+        <jsp:include page="04_adminItemView3.jsp"></jsp:include>
     </section>
 </form>
  
 
  
 </body>
-
+<script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+     <script src="js/meal.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </html>

@@ -44,9 +44,10 @@ public class MypageDAOImpl implements MypageDAO{
 	}
 
 	@Override
-	public List<ReplayVO> getMypageReplay() {
+	public List<ReplayVO> getMypageReview(String userId) {
 		// TODO Auto-generated method stub
-		return mybatis.selectList("mypage.mypage-replay");
+		System.out.println(userId);
+		return mybatis.selectList("mypage.mypage-review",userId);
 	}
 
 	@Override
@@ -55,6 +56,31 @@ public class MypageDAOImpl implements MypageDAO{
 		
 	}
 
+	@Override
+	public void dropAccount(UsersVO vo) {
+		
+		mybatis.delete("mypage.dropAccount",vo);
+		
+	}
+
+	@Override
+	public CommunityVO reView(CommunityVO vo) {
+		mybatis.update("mypage.viewCount",vo);
+		return mybatis.selectOne("mypage.reView",vo);
+	}
+
+	@Override
+	public void insertQnA(QnAVO vo) {
+		mybatis.insert("mypage.insertQnA", vo);
+	}
+
+	@Override
+	public QnAVO qnAView(QnAVO vo) {
+		// TODO Auto-generated method stub
+		return mybatis.selectOne("mypage.qnAView",vo);
+	}
+
+	
 	
 
 }

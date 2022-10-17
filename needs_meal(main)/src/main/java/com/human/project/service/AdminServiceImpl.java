@@ -80,6 +80,11 @@ public class AdminServiceImpl implements AdminService {
 		
 	}
 
+	@Override
+	public List<ItemVO> getAdminItemCtgList(ItemVO itemvo) {
+		return adminDAO.getAdminItemCtgList(itemvo);
+	}
+
 	
 	
 	

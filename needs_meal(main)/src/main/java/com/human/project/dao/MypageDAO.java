@@ -2,6 +2,7 @@ package com.human.project.dao;
 
 import java.util.List;
 
+import com.human.project.domain.CommunityVO;
 import com.human.project.domain.ItemVO;
 import com.human.project.domain.MealVO;
 import com.human.project.domain.QnAVO;
@@ -26,8 +27,12 @@ public interface MypageDAO {
 	List<QnAVO> getMypageQnA();
 
 //  내가 쓴 댓글 조회
-	List<ReplayVO> getMypageReplay();
+	List<ReplayVO> getMypageReview(String userId);
 	
 	public void modifyAccount(UsersVO vo);
+	public CommunityVO reView(CommunityVO vo);
 	
+	public void dropAccount(UsersVO vo);
+	public void insertQnA(QnAVO vo);
+	public QnAVO qnAView(QnAVO vo);
 }

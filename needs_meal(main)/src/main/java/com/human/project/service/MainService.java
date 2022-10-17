@@ -14,12 +14,16 @@ public interface MainService {
 	ItemVO getMainItem(ItemVO itemvo);
 	// 전체조회
 	List<ItemVO> getMainItemList();
+//	밀키트 카테고리별 조회
+	List<ItemVO>  selectItemCtgList(ItemVO itemvo);
 		
 //	밀키트 리스트 및 밀키트 하나만 조회
 	// 상세조회
 	MealVO getMainMeal(MealVO mealvo);
 	// 전체조회
 	List<MealVO> getMainMealList();
+//	해당 재료를 갖고있는 밀키트  조회
+	List<MealVO>  selectMealgetitemList(ItemVO itemvo);
 	
 //	밀키트 카테고리별 조회
 	List<MealVO>  selectMealCtgList(MealVO mealvo);

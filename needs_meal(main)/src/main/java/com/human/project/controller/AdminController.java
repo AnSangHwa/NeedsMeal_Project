@@ -43,6 +43,16 @@ public class AdminController {
 		// 직접맵핑된 페이지를 모두 확인 한 후에 없으면 실행되는 맵핑메소드
 		return step;
 	}
+
+//	재료 추가하는 페이지에서 재료코드에따른 재료리스트 보여주기
+	@RequestMapping("99_itemCtgList.do")
+	public String addItem(ItemVO itemvo,Model model) {
+		
+		List<ItemVO> itemList = adminService.getAdminItemCtgList(itemvo);
+		model.addAttribute("ItemList", itemList);
+		
+		return "04_adminItemAdd";
+	}
 	
 //	재료 추가하기
 	@RequestMapping("99_itemInsert.do")
@@ -60,6 +70,7 @@ public class AdminController {
 		List<ItemVO> itemList = adminService.getAdminItemList();
 		model.addAttribute("ItemList", itemList);
 	}
+	
 	
 //	재료 선택하기
 	@RequestMapping("99_adminItemPick.do")
@@ -89,6 +100,13 @@ public class AdminController {
 		adminService.updateAdminItem(itemvo);
 		
 		return "redirect:/04_adminItemManage.do";
+	}
+//  밀키트 추가하러들어가기
+	@RequestMapping("04_adminMealKitAdd.do")
+	public void addMeal(Model model) {
+		
+		List<ItemVO> itemList = adminService.getAdminItemList();
+		model.addAttribute("ItemList", itemList);
 	}
 	
 //	밀키트 추가하기

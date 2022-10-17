@@ -3,6 +3,7 @@ package com.human.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.human.project.dao.MypageDAO;
 import com.human.project.dao.PayDAO;
 import com.human.project.domain.ItemVO;
 import com.human.project.domain.MealVO;
@@ -31,5 +32,7 @@ public class PayServiceImpl implements PayService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 } 

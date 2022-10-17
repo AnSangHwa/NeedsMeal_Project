@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.human.project.dao.MypageDAO;
+import com.human.project.domain.CommunityVO;
 import com.human.project.domain.ItemVO;
 import com.human.project.domain.MealVO;
 import com.human.project.domain.QnAVO;
@@ -43,15 +44,38 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<ReplayVO> getMypageReplay() {
+	public List<ReplayVO> getMypageReview(String userId) {
 		// TODO Auto-generated method stub
-		return mypageDAO.getMypageReplay();
+		return mypageDAO.getMypageReview(userId);
 	}
 
 	@Override
 	public void modifyAccount(UsersVO vo) {
 		mypageDAO.modifyAccount(vo);
 		
+	}
+
+	@Override
+	public void dropAccount(UsersVO vo) {
+		mypageDAO.dropAccount(vo);
+		
+	}
+
+	@Override
+	public CommunityVO reView(CommunityVO vo) {
+		return mypageDAO.reView(vo);
+	}
+
+	@Override
+	public void insertQnA(QnAVO vo) {
+		mypageDAO.insertQnA(vo);
+		
+	}
+
+	@Override
+	public QnAVO qnAView(QnAVO vo) {
+		
+		return mypageDAO.qnAView(vo);
 	}
 	
 	

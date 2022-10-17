@@ -285,11 +285,14 @@
 							<div class="col-lg-9">
 								<div class="modify-btn">
 									<input type='button' value='완료' id="modify"> 
-									<input type='button'	value='취소' onclick="location.href = '02_modifyAccountForm.do'"> 
-									<input type="button" value="회원탈퇴">
+									<input type='button' value='취소' onclick="location.href = '02_MyPage.do'"> 
+									<input type="button" id="dropAccountBtn" value="회원탈퇴" onclick="dropAccount()">
 								</div>
 
 							</div>
+						</form>
+						<form name="drop" action="dropAccount.do">
+							<input type="hidden" name="u_id" value="${u_id}">
 						</form>
 
 					</div>
@@ -333,6 +336,17 @@
 	$('#birthMonth').val(arr[1]);
 	$('#birthDay').val((arr[2].split(' '))[0]);
 	
+	function dropAccount(){
+		
+		if(confirm("기존 포인트 및 회원 혜택이 사라집니다\n정말 회원탈퇴를 하시겠습니까?")){
+			
+			drop.submit();
+			
+			alert("회원탈퇴 되었습니다");
+			
+		}
+		
+	}
 	
 	
 

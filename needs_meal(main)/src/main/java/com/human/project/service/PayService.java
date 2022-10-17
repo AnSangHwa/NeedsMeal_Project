@@ -16,5 +16,7 @@ public interface PayService {
 	MealVO getPayMeal(MealVO mealvo);
 
 //	OrderListVO 주문에 관한 메소드
+	
+	
 }
  

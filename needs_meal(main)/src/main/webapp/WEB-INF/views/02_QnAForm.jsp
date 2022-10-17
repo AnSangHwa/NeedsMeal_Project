@@ -33,27 +33,21 @@
 
 
         <div class="container main-body">
-        	<form action="00_get.do" method="post">
+        	<form action="productQnAList.do" method="get">
             <div class="top-title">
                 <h1>1:1 문의</h1>
             </div>
             <hr>
             <div>
-         
-                    
                    <div class="row line">
                       
                    </div>  
-                      
-                   
-
-                  
                   
                    <div class="row line">
                    		
                         <div class="col-2">제목</div>
                         <div class="col-3">
-                            <input class="textbox" name="e_name" type="text">
+                            <input class="textbox" name="q_title" type="text">
                         </div>
                     </div>
                  
@@ -63,7 +57,7 @@
                         <div class="col-2 item align-self-center">본문</div>
                         <div class="col-10 ">
                          <textarea  id="editorTxt" cols="50" rows="15"></textarea>
-                         <input type="hidden" id="e-content" name="e_content">
+                         <input type="hidden" id="e-content" name="q_content">
                         </div>
                     </div>
                         
@@ -73,9 +67,9 @@
 
                             <input  class="textbox" type="text">
                             &nbsp;&nbsp;&nbsp;
-                            <button>찾아보기</button>
+                            <button type="button">찾아보기</button>
                             &nbsp;&nbsp;&nbsp;
-                            <button>추가</button>
+                            <button type="button">추가</button>
                            
                             <!-- <div class="col-3">
                                 <input type="text">
@@ -101,11 +95,11 @@
          
             <div class="row">
                 <div class="col-6 btn-back filter-button-group">
-                    <button>이전</button>
+                    <button type="button" onclick="location.href='02_MyPage.do'">이전</button>
                 </div>
                
                 <div class="col-6 btn-save filter-button-group" >
-                    <button>저장</button>
+                    <button type="submit">저장</button>
                 </div> 
             </div> 
         						

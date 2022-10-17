@@ -19,6 +19,8 @@ public interface AdminService {
 		ItemVO getAdminItem(ItemVO itemvo);
 		// 전체조회
 		List<ItemVO> getAdminItemList();
+//		카테고리별 조회
+		List<ItemVO> getAdminItemCtgList(ItemVO itemvo);
 		
 		// 추가
 		void insertAdminMeal(MealVO mealvo);

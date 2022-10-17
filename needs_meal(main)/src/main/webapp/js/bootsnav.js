@@ -618,18 +618,18 @@
 //		----------------------- 마이페이지 로그인이 필요합니다.
                 
                 
-//		$('.right-sidebar-mini a').click(function() {
-//			if( $(this).children('button').text() == '로그인'){
-//			$('.go-log-in').click(function() {
-//				$('.go-log-in').prop('href','05_login.do')
-//			})
-//			}else if( $('.login-box a button').text() == '로그인' ){
-//				$('.right-sidebar-mini a').prop('href','#');
-//				$('.go-log-in').prop('href','05_login.do')
-//				alert('로그인이 필요합니다.');
-//			}
-//			
-//		})
+		$('.right-sidebar-mini a').click(function() {
+			if( $(this).children('button').text() == '로그인'){
+			$('.go-log-in').click(function() {
+				$('.go-log-in').prop('href','05_login.do')
+			})
+			}else if( $('.login-box a button').text() == '로그인' ){
+				$('.right-sidebar-mini a').prop('href','#');
+				$('.go-log-in').prop('href','05_login.do')
+				alert('로그인이 필요합니다.');
+			}
+			
+		})
 		
                 //		----------------------- 밑에는 다른부분.
                 

@@ -5,14 +5,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="mypage">
 	
-	<select id="mypage-replay" resultType="replay">
-		SELECT r_seq_id, r_content, r_date, u_id, c_id
-		FROM reply
+	<select id="mypage-review" parameterType="string" resultType="commu">
+		SELECT *
+		FROM community
+		WHERE ctg_id LIKE '4%' AND u_id = #{userId}
 	</select>
 	
 	<select id="mypage-qna" resultType="qna">
 		SELECT q_date, q_id, q_title 
 		from QNA
+		ORDER BY q_date DESC
 	</select>
 	
 	<update id="modifyAccount" parameterType="users">
@@ -22,7 +24,62 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 WHERE u_id = #{u_id}
 	</update>
 	
+	<delete id="dropAccount" parameterType="users">
+		{call
+		 	declare
+		 	begin
+		DELETE 
+		  FROM qna
+		 WHERE u_id=#{u_id};  
+		 
+		DELETE 
+		  FROM reply
+		 WHERE u_id=#{u_id};  
+		 
+		DELETE 
+		  FROM community
+		 WHERE u_id=#{u_id};  
+		 
+		 DELETE 
+		  FROM orderlist
+		 WHERE u_id=#{u_id};
+		 
+		DELETE 
+		  FROM orders
+		 WHERE u_id=#{u_id};  
+		
+		DELETE 
+		  FROM users
+		 WHERE u_id=#{u_id};
+		 end
+		} 
+	
+	</delete>
+	
+	<select id="reView" parameterType="commu" resultType="commu">
+	
+		SELECT *
+		  FROM community
+		 WHERE ctg_id= #{ctg_id} AND c_id = #{c_id}
+		  
+	</select>	
+	<update id="viewCount" parameterType="commu">
+		UPDATE community
+		   set c_cnt=c_cnt+1
+		 WHERE ctg_id= #{ctg_id} AND c_id = #{c_id}
+	</update>
+	<insert id="insertQnA" parameterType="qna">
+		INSERT INTO qna
+		VALUES( seq_qna.nextval, #{u_id} , #{q_title}, #{q_content}, sysdate)
 	
 	
+	</insert>
+	
+	<select id="qnAView" parameterType="qna" resultType="qna">
+		SELECT *
+		  FROM qna
+		 WHERE q_id = #{q_id}
+	
+	</select>
 
 </mapper>

@@ -1,5 +1,10 @@
+<%@page import="com.human.project.domain.MealVO"%>
+<%@page import="com.human.project.domain.ItemVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@page contentType="text/html; charset=UTF-8"%>
+<%@page import="com.human.project.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="ctg-name">밀키트</h2>
+                    <h2 class="ctg-name">재료</h2>
                 </div>
             </div>
         </div>
@@ -38,27 +43,28 @@
                                 </div>
                                 <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
                                     <div class="list-group-collapse sub-men">
-                                        <a class="list-group-item commu list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1"> 밀키트</a>
-                                        <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
+                                        <a class="list-group-item commu list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men1"> 밀키트</a>
+                                        <div class="collapse" id="sub-men1" data-parent="#list-group-men">
                                             <div class="list-group">
-                                                <a href="#" class="list-group-item list-group-item-action"> 한식 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 양식 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 분식 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 아시아 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 분식/야식 </a>
+                                                <a href="99_mealCtgList.do?ctg_id=1001" class="list-group-item list-group-item-action"> 한식 </a>
+                                                <a href="99_mealCtgList.do?ctg_id=1002" class="list-group-item list-group-item-action"> 양식 </a>
+                                                <a href="99_mealCtgList.do?ctg_id=1003" class="list-group-item list-group-item-action"> 아시아 </a>
+                                                <a href="99_mealCtgList.do?ctg_id=1004" class="list-group-item list-group-item-action"> 분식/야식 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="list-group-collapse sub-men">
-                                        <a class="list-group-item commu list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">재료</a>
-                                        <div class="collapse" id="sub-men2" data-parent="#list-group-men">
+                                        <a class="list-group-item commu list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men2">재료</a>
+                                        <div class="collapse show" id="sub-men2" data-parent="#list-group-men">
                                             <div class="list-group">
-                                                <a href="#" class="list-group-item list-group-item-action"> 채소 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 수산 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 육류 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 소스/육수 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 밑반찬 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 간식 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2001" class="list-group-item list-group-item-action"> 채소 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2002" class="list-group-item list-group-item-action"> 수산 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2003" class="list-group-item list-group-item-action"> 육류 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2004" class="list-group-item list-group-item-action"> 소스/육수 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2005" class="list-group-item list-group-item-action"> 밑반찬 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2006" class="list-group-item list-group-item-action"> 간식 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2007" class="list-group-item list-group-item-action"> 면 </a>
+                                                <a href="99_item_CtgList.do?ctg_id=2008" class="list-group-item list-group-item-action"> 그외 </a>
                                             </div>
                                         </div>
                                     </div>
@@ -80,131 +86,33 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
-	                                    <div class="col-sm-6 col-md-6 col-lg-2 col-xl-3 한식" >
-                                            <form action="01_productView.do" method="get">
+	                                        <c:forEach items="${ItemList }" var="item">
+	                                    <div class="col-sm-6 col-md-6 col-lg-2 col-xl-3" >
+                                            <form action="01_itemView.do" method="post">
                                                 <button type="submit" class="btn" border="0px">
 	                                            <div class="products-single fix" >
 	                                                <div class="box-img-hover" >
 	                                                    <div class="type-lb">
 	                                                        <p class="new">new</p>
 	                                                    </div>
-	                                                    <img src="images/menu1.jpg" class="img-fluid" alt="Image" id="rowcursor">
+	                                                    <img src="images/imgMeal/${item.i_name }.png" class="img-fluid" alt="Image" id="rowcursor">
 	                                                    </a>
 	                                                </div>
 	                                                <div class="why-text" id="why-text">
-	                                                    <h4 id="rowcursor">밀페유나베</h4>
-	                                                    <input type="hidden" name="m_name" value="밀페유나베">
-	                                                    <span><h5 name="m_price"> 20,000 원</h5></span>
-	                                                    <span id="discount"> 30,000원</span>
-	                                                    <div class="review option">
-	                                                        <span class="star">
-	                                                           		 ★★★★★
-	                                                        </span>  
-	                                                        <span>리뷰 100</span>                                                  
-	                                                    </div> 
+	                                                    <h4 id="rowcursor">${item.i_name }</h4>
+	                                                    <input type="hidden" name="i_name" value="${item.i_name }">
+	                                                    <input type="hidden" name="i_id" value="${item.i_id }">
+	                                                    <input type="hidden" name="i_price" value="${item.i_price }">
+	                                                    <span><h5> ${item.i_price } 원</h5></span>
+	                                                    <span id="discount"> ${item.i_price } 원</span>
 	                                                </div>
 	                                            </div>
 	                                            </button>
 	                                        </form>
 	                                    </div>
-                                        <!-- end mil1 -->
-                                        <div class="col-sm-6 col-md-6 col-lg-2 col-xl-3 한식">
-                                            <div class="products-single fix"  >
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="new">New</p>
-                                                    </div>
-                                                    <a href="01_productView.do">
-                                                    <img src="images/menu2.jpg" class="img-fluid" alt="Image" id="rowcursor">
-                                                    </a>    
-                                                </div>
-                                                <div class="why-text" id="why-text">
-                                                    <h4 id="rowcursor">깜바스</h4>
-                                                    <span><h5> 100,000 원</h5></span>
-                                                    <span id="discount"> 30,000원</span>
-                                                    <div class="review option">
-                                                        <span class="star">
-                                                           	 ★★★★★
-                                                        </span>  
-                                                        <span>리뷰 100</span>                                                  
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end mil2 -->
-                                        <div class="col-sm-6 col-md-6 col-lg-2 col-xl-3">
-                                            <div class="products-single fix" >
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Sale</p>
-                                                    </div>
-                                                    <a href="01_productView.do">
-                                                        <img src="images/menu3.jpg" class="img-fluid" alt="Image" id="rowcursor">
-                                                    </a>
-                                                </div>
-                                                <div class="why-text" id="why-text">
-                                                    <h4 id="rowcursor">스테끼</h4>
-                                                    <span><h5> 1,000,000 원</h5></span>
-                                                    <span id="discount"> 100,000원</span>
-                                                    <div class="review option">
-                                                        <span class="star">
-                                                            	★★★★★
-                                                        </span>  
-                                                        <span>리뷰 100</span>                                                  
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end mil3 -->
-                                        <div class="col-sm-6 col-md-6 col-lg-2 col-xl-3">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="new">New</p>
-                                                    </div>
-                                                    <a href="01_productView.do">
-                                                        <img src="images/menu4.jpg" class="img-fluid" alt="Image" id="rowcursor">
-                                                    </a>
-                                                </div>
-                                                <div class="why-text" id="why-text">
-                                                    <h4 id="rowcursor">베트콩에서 온 쌀국수</h4>
-                                                    <span><h5> 30,000 원</h5></span>
-                                                    <span id="discount"> 60,000원</span>
-                                                    <div class="review option">
-                                                        <span class="star">
-                                                            	★★★★★
-                                                        </span>  
-                                                        <span>리뷰 100</span>                                                  
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>     
-                                        <!-- end mil4 -->  
-                                      <div class="col-sm-6 col-md-6 col-lg-2 col-xl-3" >
-                                    	<div class="products-single fix" >
-                                            <div class="box-img-hover" >
-                                               	<div class="type-lb">
-                                                     <p class="new">new</p>
-                                                 </div>
-                                                 <a href="01_productView.do">
-                                                 <img src="images/menu1.jpg" class="img-fluid" alt="Image" id="rowcursor">
-                                                 </a>
-                                             </div>
-                                             <div class="why-text" id="why-text">
-                                                 <h4 id="rowcursor">밀페유나베</h4>
-                                                 <span><h5> 20,000 원</h5></span>
-                                                 <span id="discount"> 30,000원</span>
-                                                 <div class="review option">
-                                                     <span class="star">
-                                                        		 ★★★★★
-                                                     </span>  
-                                                     <span>리뷰 100</span>                                                  
-                                                 </div> 
-                                              </div>
-                                          </div>
-                                        </div>
-                                        <!-- end mil5 -->
-                                    </div>
+											</c:forEach>
+<!-- <!--                                         ---------------------------여기서 컷 -->
+                                     </div>
                                 </div>
                             </div>
                         </div>
