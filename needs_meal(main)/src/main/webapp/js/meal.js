@@ -113,7 +113,7 @@ $(function() {
 //		alert($(this).parent().prev().text())
 //		alert($('.item-list .item-ctg-2007').text())
 //		alert($(this).parent().prev().text() == $('.item-list .item-ctg-2007').text())
-//			$('.item-list').hide();
+			$('.item-list').hide();
 			$('.item-list .item-ctg-'+$(this).parent().prev().text()).parent().show();			
 	})
     

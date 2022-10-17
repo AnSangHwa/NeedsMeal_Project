@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,11 +28,12 @@ public class MainController {
 	private int addCart;
 	private int deleteCart;
 
-	 
+
+	
 //	 커뮤니티 글 추가
 	 @RequestMapping("99_communityadd.do")
-	 public String Insertcommu(CommunityVO commuvo) {
-		 
+	 public String Insertcommu(CommunityVO commuvo, HttpSession session) {
+		 commuvo.setU_id((String) session.getAttribute("u_id"));
 		 mainService.insertCommunity(commuvo);
 		 
 		 return "redirect:/01_communityList.do";

@@ -81,12 +81,7 @@
                                 <a href="05_passFind.do">
                                     <button class="btn hvr-hover" type="button" style="width: 115px; color:white; font-size: small;">비밀번호 찾기</button>
                                 </a>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <a href="04_adminMain.do">
-                                    <button class="btn hvr-hover" type="button" style="width: 115px; color:white; font-size: small;">관리자</button>
-                                </a>
-                            </div>
+                            </div>      
                         </div>
                     </form>
                 </div>

@@ -103,12 +103,14 @@
 						<li class="dropdown active"><a href="01_itemList.do"
 							class="nav-link dropdown-toggle " data-toggle="dropdown">재료</a>
 							<ul class="dropdown-menu">
-								<li><a href="01_itemList.do">채소</a></li>
-								<li><a href="01_itemList.do">수산</a></li>
-								<li><a href="01_itemList.do">육류</a></li>
-								<li><a href="01_itemList.do">소스/육수</a></li>
-								<li><a href="01_itemList.do">밑반찬</a></li>
-								<li><a href="01_itemList.do">간식</a></li>
+								<li><a href="99_item_CtgList.do?ctg_id=2001"> 채소 </a></li>
+                                <li><a href="99_item_CtgList.do?ctg_id=2002"> 수산 </a></li>
+                                <li><a href="99_item_CtgList.do?ctg_id=2003"> 육류 </a></li>
+                                <li><a href="99_item_CtgList.do?ctg_id=2004"> 소스/육수 </a></li>
+                                <li><a href="99_item_CtgList.do?ctg_id=2005"> 밑반찬 </a></li>
+                                <li><a href="99_item_CtgList.do?ctg_id=2006"> 간식 </a></li>
+                                <li><a href="99_item_CtgList.do?ctg_id=2007"> 면 </a></li>
+                                <li><a href="99_item_CtgList.do?ctg_id=2008"> 그외 </a></li>            
 							</ul></li>
 						<li class="dropdown active"><a href="01_productList.do"
 							class="nav-link">베스트상품</a></li>
