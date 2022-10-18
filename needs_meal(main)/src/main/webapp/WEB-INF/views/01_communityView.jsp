@@ -5,20 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="com.human.project.*" %>
-<% String ctg = request.getParameter("ctg_id");
-	int ctg_num = Integer.parseInt(ctg);
-	
-	switch (ctg_num){
-		case 3001:
-			ctg = "잡담";
-			break;
-		case 3002:
-			ctg = "메뉴추천";
-			break;
-		case 3003:
-			ctg = "꿀팁";
-			break;
-	}; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="ctg-name"><%=ctg %></h2>
+                    <h2 class="ctg-name">커뮤니티</h2>
                 </div>
             </div>
         </div>
@@ -72,7 +58,7 @@
                                     <div class="collapse" id="sub-men2" data-parent="#list-group-men">
                                         <div class="list-group">
                                             <a href="99_communitiyList.do?ctg_id=4000" class="list-group-item list-group-item-action"> 전체상품후기 </a>
-                                            <a href="99_myReviewList.do?ctg_id=4000&u_id=${u_id }" class="list-group-item list-group-item-action user-loginOK"> 내가쓴글 </a>
+                                            <a href="99_communitiyList.do?ctg_id=4000" class="list-group-item list-group-item-action"> 내가쓴글 </a>
                                         </div>
                                     </div>
                                 </div>
@@ -82,30 +68,31 @@
                     </div>
                 </div>
                 <!-- 게시판 -->
-                <div class="col-lg-9 col-sm-12">
+                <div class="col-lg-8 col-sm-12">
                     <div class="contact-form-right">
-                        <h2><%=ctg %> <a href="01_commuAdd.do"><input type="button" id="go-write" value="글쓰기"></a></h2>
-                        <table class="boardTable">
-                            <tr>
-                                <th> ID </th>
-                                <th> 구분 </th>
-                                <th> 작성자 </th>
-                                <th> 제목 </th>
-<!--                                 <th> 추천수 </th> -->
-                                <th> 조횟수 </th>
-                                <th> 작성일 </th>
-                            </tr>
-			                <c:forEach items="${CommuList }" var="commu">
-							<tr>
-								<td>${commu.ctg_id }${commu.c_id }</td>
-								<td>${commu.ctg_name }</td>
-								<td>${commu.u_id }</td>					
-								<td><a href="01_communityView.do?c_id=${commu.c_id }">${commu.c_title }</a></td>					
-								<td>${commu.c_cnt }</td>					
-								<td>${commu.c_date }</td>
-								</tr>
-							</c:forEach> 
-                        </table>
+					       <H1 class="head_word">커뮤니티</H1>
+					       <div class="review_title">제목</div>
+					       <div class="review_info">
+					           <span class="buyer_type">작성자</span>
+					           <span class="review_word_divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+					           <span class="review_generated_time">날짜</span>
+					       </div>
+					       
+					       <div>내용</div>
+					       <div>
+					           <span>총 댓글&nbsp;</span><span class="comment_count">0</span>
+					       </div>
+					       <form action="#">
+					       
+					        <br> <input class="comment_area" type="text" name="r_content" style="width: 80%" placeholder="덧글을 작성해주세요." >
+					        		<input type="submit" class="btn btn-secondary" style="width: 100px; height: 50px" value="덧글달기" >
+					        		<input type="hidden" name="">
+					        		<input type="hidden" name="">
+					        		<input type="hidden" name="">
+					        		<input type="hidden" name="">
+					        <br>
+					       </form>
+    
                     </div>
                 </div>
                

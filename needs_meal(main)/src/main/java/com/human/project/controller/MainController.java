@@ -26,7 +26,6 @@ public class MainController {
 	private ArrayList<ItemVO> baseList = new ArrayList<ItemVO>();
 	private ArrayList<Object> cartList = new ArrayList<Object>();
 	private int addCart;
-	private int deleteCart;
 
 
 	
@@ -58,10 +57,17 @@ public class MainController {
 		 
 		 if( commuvo.getCtg_id() < 4000 ) {
 			 
-		 return "01_communityList";
+		 return "01_communityList2";
 		 }else {
-			 return "01_communityList2";
+			 return "01_communityList3";
 		 }
+	 }
+	 
+//	 상품후기 내가쓴글
+	 @RequestMapping("99_myReviewList.do")
+	 public String myReview() {
+		 
+		 return "01_communityList3";
 	 }
 	
 //	 밀키트 리스트 조회

@@ -7,17 +7,11 @@
 <%@page import="com.human.project.*" %>
 <% String ctg = request.getParameter("ctg_id");
 	int ctg_num = Integer.parseInt(ctg);
-	
 	switch (ctg_num){
-		case 3001:
-			ctg = "잡담";
+		case 4000:
+			ctg = "상품후기";
 			break;
-		case 3002:
-			ctg = "메뉴추천";
-			break;
-		case 3003:
-			ctg = "꿀팁";
-			break;
+
 	}; %>
 <!DOCTYPE html>
 <html>
@@ -59,7 +53,7 @@
                             <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
                                 <div class="list-group-collapse sub-men">
                                     <a class="list-group-item commu list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men1"> 자유게시판</a>
-                                    <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
+                                    <div class="collapse" id="sub-men1" data-parent="#list-group-men">
                                         <div class="list-group">
                                             <a href="99_communitiyList.do?ctg_id=3001" class="list-group-item list-group-item-action"> 잡담 </a>
                                             <a href="99_communitiyList.do?ctg_id=3002" class="list-group-item list-group-item-action"> 메뉴추천 </a>
@@ -69,7 +63,7 @@
                                 </div>
                                 <div class="list-group-collapse sub-men">
                                     <a class="list-group-item commu list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">상품후기</a>
-                                    <div class="collapse" id="sub-men2" data-parent="#list-group-men">
+                                    <div class="collapse show" id="sub-men2" data-parent="#list-group-men">
                                         <div class="list-group">
                                             <a href="99_communitiyList.do?ctg_id=4000" class="list-group-item list-group-item-action"> 전체상품후기 </a>
                                             <a href="99_myReviewList.do?ctg_id=4000&u_id=${u_id }" class="list-group-item list-group-item-action user-loginOK"> 내가쓴글 </a>
