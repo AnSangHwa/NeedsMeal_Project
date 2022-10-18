@@ -596,14 +596,7 @@
     
 //    ----------------------------------------------------------------------------------- 수정하기
     
-//     밀키트 좌측 사이드바를 클릭시 이름 변경
-    	$('.list-group a').click(function() {
-//			alert($(this).text())
-			$('.list-group a').removeClass("active");
-			$(this).addClass("active");
-			$('.ctg-name').text($(this).text());
-			
-		})
+
 		
 //		$('.dropdown-menu li').click(function() {
 //			$('.ctg-name').text($(this).text());
@@ -624,6 +617,7 @@
 				$('.go-log-in').prop('href','05_login.do')
 			})
 			}else if( $('.login-box a button').text() == '로그인' ){
+				
 				$('.right-sidebar-mini a').prop('href','#');
 				$('.go-log-in').prop('href','05_login.do')
 				alert('로그인이 필요합니다.');
@@ -631,6 +625,12 @@
 			
 		})
 		
+		$('.user-loginOK').click(function() {
+			if( $('.login-box > a').children('button').text() == '로그인'){
+				$('.user-loginOK').prop('href','#');
+				alert('로그인이 필요합니다.');
+			}
+		})
                 //		----------------------- 밑에는 다른부분.
                 
                 

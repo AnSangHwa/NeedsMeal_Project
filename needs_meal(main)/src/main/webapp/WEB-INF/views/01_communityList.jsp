@@ -58,7 +58,7 @@
                                     <div class="collapse" id="sub-men2" data-parent="#list-group-men">
                                         <div class="list-group">
                                             <a href="99_communitiyList.do?ctg_id=4000" class="list-group-item list-group-item-action"> 전체상품후기 </a>
-                                            <a href="99_communitiyList.do?ctg_id=4000" class="list-group-item list-group-item-action"> 내가쓴글 </a>
+                                            <a href="99_myReviewList.do?ctg_id=4000&u_id=${u_id }" class="list-group-item list-group-item-action user-loginOK"> 내가쓴글 </a>
                                         </div>
                                     </div>
                                 </div>
@@ -68,9 +68,9 @@
                     </div>
                 </div>
                 <!-- 게시판 -->
-                <div class="col-lg-8 col-sm-12">
+                <div class="col-lg-9 col-sm-12">
                     <div class="contact-form-right">
-                        <h2>자유게시판 <a href="01_commuAdd.do"><input type="button" value="글쓰기"></a></h2>
+                        <h2>전체 게시판 <a href="01_commuAdd.do"><input type="button" id="go-write" value="글쓰기"></a></h2>
                         <table class="boardTable">
                             <tr>
                                 <th> ID </th>
@@ -86,7 +86,7 @@
 								<td>${commu.ctg_id }${commu.c_id }</td>
 								<td>${commu.ctg_name }</td>
 								<td>${commu.u_id }</td>					
-								<td>${commu.c_title }</td>					
+								<td><a href="01_communityView.do?c_id=${commu.c_id }">${commu.c_title }</a></td>					
 								<td>${commu.c_cnt }</td>					
 								<td>${commu.c_date }</td>
 								</tr>
