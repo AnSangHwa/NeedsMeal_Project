@@ -11,7 +11,7 @@
 			$('#join').attr("type","submit");
 		}else{
 			$('#join').attr("type","submit");
-		 
+		
 		}
 		
 	
