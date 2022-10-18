@@ -13,7 +13,7 @@
 			$('#join').attr("type","submit");
 		
 		}
-		
+		 
 	
 	})
 	
