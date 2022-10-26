@@ -49,6 +49,14 @@
                         <div class="col-3">
                             <input class="textbox" name="q_title" type="text">
                         </div>
+                        <input type="hidden" name="ctg_id" value="5000">
+                    </div>
+                   <div class="row line">
+                   		
+                        <div class="col-2">문의상품</div>
+                        <div class="col-3">
+                            <input class="textbox" name="goods" type="text">
+                        </div>
                     </div>
                  
                   
@@ -62,28 +70,7 @@
                     </div>
                         
 
-                        <div class="row line">
-                            <div class="col-2 file">첨부파일</div>
-
-                            <input  class="textbox" type="text">
-                            &nbsp;&nbsp;&nbsp;
-                            <button type="button">찾아보기</button>
-                            &nbsp;&nbsp;&nbsp;
-                            <button type="button">추가</button>
-                           
-                            <!-- <div class="col-3">
-                                <input type="text">
-                            </div>
-                            
-                            <div class="col-3">
-                                <button>찾아보기</button>
-                            </div>
-
-                            <div class="col-3">
-                                <button>추가</button>
-                            </div> -->
-                          
-                        </div>
+                       
                        
 
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pay">	
+
+	<insert id="insertOrder" parameterType="order" >
+		{call
+		declare
+		begin
+		
+		INSERT INTO orders
+		VALUES(seq_orders.NEXTVAL, #{m_name}, #{u_id}, #{o_cnt}, #{o_price}, 0, sysdate, #{o_pickList} );
+	
+	
+		INSERT INTO orderList
+		VALUES(seq_orderList.NEXTVAL, seq_orders.CURRVAL, #{ol_name}, #{ol_addr}, #{ol_tell}, #{ol_content});
+		
+		UPDATE users
+		  SET u_point = u_point - ${u_point}
+		  WHERE u_id = #{u_id};
+		
+		end
+		}
+	</insert>
+	
+	<update id="mealCntUpdate" parameterType="meal">
+		
+			
+		UPDATE meal
+		  SET m_sell_cnt = m_sell_cnt + ${m_sell_cnt}, m_stock = m_stock - ${m_sell_cnt}
+		  WHERE m_name = #{m_name}
+		 	
+		
+		 
+	</update>
+	<update id="itemCntUpdate" parameterType="item">
+		
+		UPDATE item
+		  SET i_sell_cnt = i_sell_cnt + ${i_sell_cnt}, i_stock_cnt = i_stock_cnt - ${i_sell_cnt}
+		  WHERE i_name = #{i_name}
+	
+	</update>
+	<select id="orderInfo" parameterType="order" resultType="order">
+		SELECT * 
+		FROM (SELECT * FROM orders ORDER BY o_id DESC)
+		WHERE rownum = 1	
+	</select>
+</mapper>

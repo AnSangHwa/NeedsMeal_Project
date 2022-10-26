@@ -1,4 +1,5 @@
 <%@page import="com.human.project.domain.MealVO"%>
+<%@page import="com.human.project.domain.CommunityVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
@@ -10,6 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <jsp:include page="00_header.jsp"></jsp:include>
 </head>
 <body>
@@ -33,8 +35,8 @@
                     <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active"> <img class="d-block w-100" src="images/imgMeal/${meal.m_name }.png" alt="First slide"> </div>
-                            <div class="carousel-item"> <img class="d-block w-100" src="images/big-img-02.jpg" alt="Second slide"> </div>
-                            <div class="carousel-item"> <img class="d-block w-100" src="images/big-img-03.jpg" alt="Third slide"> </div>
+<!--                             <div class="carousel-item"> <img class="d-block w-100" src="images/big-img-02.jpg" alt="Second slide"> </div> -->
+<!--                             <div class="carousel-item"> <img class="d-block w-100" src="images/big-img-03.jpg" alt="Third slide"> </div> -->
                         </div>
                         <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev"> 
 						<i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -48,12 +50,12 @@
                             <li data-target="#carousel-example-1" data-slide-to="0" class="active">
                                 <img class="d-block w-100 img-fluid" src="images/imgMeal/${meal.m_name }.png" alt="" />
                             </li>
-                            <li data-target="#carousel-example-1" data-slide-to="1">
-                                <img class="d-block w-100 img-fluid" src="images/smp-img-02.jpg" alt="" />
-                            </li>
-                            <li data-target="#carousel-example-1" data-slide-to="2">
-                                <img class="d-block w-100 img-fluid" src="images/smp-img-03.jpg" alt="" />
-                            </li>
+<!--                             <li data-target="#carousel-example-1" data-slide-to="1"> -->
+<!--                                 <img class="d-block w-100 img-fluid" src="images/smp-img-02.jpg" alt="" /> -->
+<!--                             </li> -->
+<!--                             <li data-target="#carousel-example-1" data-slide-to="2"> -->
+<!--                                 <img class="d-block w-100 img-fluid" src="images/smp-img-03.jpg" alt="" /> -->
+<!--                             </li> -->
                         </ol>
                     </div>
                 </div>
@@ -146,13 +148,14 @@
                        
 
 						
-						<form action="99_go_cart.do" get="post">
+						<form action="#" method="post">
 						<div class="price-box-bar" >
 							<div class="cart-and-bay-btn">
 								<input type="hidden" name="m_name" value="${meal.m_name }">
 								<input type="hidden" id="cart-price" name="m_price" value="${meal.m_price }">
-								<a class="btn hvr-hover" id="go-buy" href="03_paymentForm.do">구매하기</a>
-								<button type="submit" class="btn hvr-hover" style="height:44px; font-weight: bolder; color:white;">장바구니 담기</button>
+								<input type="hidden" id="sellCnt" name="m_sell_cnt" value="1">
+								<button type="submit" class="btn hvr-hover go-paymeal" style="height:44px; font-weight: bolder; color:white;">구매하기</button>
+								<button type="submit" class="btn hvr-hover go-cartaddmeal" style="height:44px; font-weight: bolder; color:white;">장바구니 담기</button>
 							</div>
 						</div>
 						</form>
@@ -193,83 +196,55 @@
 					<div class="card-header">
 						<h2>상품 후기</h2>
 					</div>
+					<c:forEach items="${commuList }" var="commu" begin="0" end="5">
+					<c:if test="${commu.ctg_id == 4000 }">
 					<div class="card-body">
 						<div class="media mb-3">
 							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
+								<a href="01_communityView.do?c_id=${commu.c_id }"><img class="rounded-circle border p-1" src="images/imgMeal/${commu.m_name }.png" style="width: 64px; height: 64px;" alt=""></a>
 							</div>
 							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
+								<p>${commu.c_title }</p>
+								<small class="text-muted">${commu.c_date }</small>
 							</div>
 						</div>
-						<hr>
-						<div class="media mb-3">
-							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-							</div>
-							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-							</div>
-						</div>
-						<hr>
-						<div class="media mb-3">
-							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-							</div>
-							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-							</div>
-						</div>
-						<hr>
-						<a href="#" class="btn hvr-hover">후기글 전체보기</a>
+						<hr>				
 					</div>
+					</c:if>
+					</c:forEach>
+					</div>
+					<c:forEach items="${commuList }" var="commu" varStatus="status">
+						<c:if test="${status.last }">
+						<a href="98_communityList3.do?ctg_id=4000&m_name=${commu.m_name }" class="btn hvr-hover">${commu.m_name } 후기들보기</a>
+						</c:if>
+				  	</c:forEach>
+				  		<a href="99_communitiyList.do?ctg_id=4000" class="btn hvr-hover">후기글 전체보기</a>
 				  </div>
-			</div>
 
-            
             <div id="productQnA" class="row my-5" style="display: none;">
-				<div class="card card-outline-secondary my-4">
+				<div class="card card-outline-secondary my-4" >
 					<div class="card-header">
 						<h2>상품 문의</h2>
 					</div>
+					<c:forEach items="${qnaList }" var="qna" begin="0" end="5">
+					<c:if test="${qna.ctg_id == 5000 }">
 					<div class="card-body">
 						<div class="media mb-3">
 							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
+								<img class="rounded-circle border p-1" src="images/imgMeal/${qna.goods }.png" style="width: 64px; height: 64px;" alt="">
 							</div>
 							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
+								<p>${qna.q_title }</p>
+								<small class="text-muted">${qna.q_date }</small>
 							</div>
 						</div>
-						<hr>
-						<div class="media mb-3">
-							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-							</div>
-							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-							</div>
-						</div>
-						<hr>
-						<div class="media mb-3">
-							<div class="mr-2"> 
-								<img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-							</div>
-							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-								<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-							</div>
-						</div>
-						<hr>
-						<a href="#" class="btn hvr-hover">문의글 전체 보기</a>
+						<hr>				
+					</div>
+					</c:if>
+					</c:forEach>
 					</div>
 				  </div>
-			</div>
+            
 
             <div id="productExchange" class="row my-5" style="display: none;">
 				<div class="card card-outline-secondary my-4">
@@ -314,9 +289,11 @@
             </table>
 
           
-        </div>
-    </div>
     <!-- End Cart -->
 <jsp:include page="00_footer.jsp"></jsp:include>	
 </body>
+<script>
+
+
+</script>
 </html>

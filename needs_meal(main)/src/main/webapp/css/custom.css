@@ -71,7 +71,9 @@
     position: relative;
 }
 .com-top::before{
-    background: rgba(0,0,0,0.6);
+    background-image: url(../images/커뮤니티베너.png);
+  	background-size: 1000px;
+  	background-position: 50% 50%;
     content: "";
     position: absolute;
     z-index: 0;
@@ -83,7 +85,7 @@
 .com-top h2{
     font-size: 28px;
     font-weight: 700;
-    color: #ffffff;
+    color: black;
     float: left;
     padding: 10px 0px;
 }
@@ -293,6 +295,7 @@ html{
 }
 .userInfo td{
     width: 600px;
+    padding : 5px;
 }
 .userInfo .txtPlus, .userInfo .bt{
     width: 200px;
@@ -323,6 +326,9 @@ html{
 }
 /* ------------------------결제완료------------------------------------------ */
 
+.jumun_tb{
+	width: 100%;
+}
 
 .jumun_t1{
     width: 45%;

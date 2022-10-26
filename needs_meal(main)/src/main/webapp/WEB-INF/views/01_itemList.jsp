@@ -25,6 +25,11 @@
     </div>
     <!-- End All Title Box -->
  <div class="shop-box-inner">
+ 
+
+ 
+ 
+ 
 <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12 shop-content-right">
@@ -33,7 +38,7 @@
                         <div class="product-categori">
                             <div class="search-product">
                                 <form action="#">
-                                    <input class="form-control" placeholder="Search here..." type="text">
+                                    <input onkeyup="filter()" class="form-control"  id="value" placeholder="검색" type="text">
                                     <button type="submit"> <i class="fa fa-search"></i> </button>
                                 </form>
                             </div>
@@ -87,18 +92,20 @@
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
 	                                        <c:forEach items="${ItemList }" var="item">
-	                                    <div class="col-sm-6 col-md-6 col-lg-2 col-xl-3" >
+	                                    <div class="col-sm-6 col-md-6 col-lg-2 col-xl-3 item" >
                                             <form action="01_itemView.do" method="post">
-                                                <button type="submit" class="btn" border="0px">
+                                                <button type="submit" class="btn name" border="0px" value="${item.i_name }">
 	                                            <div class="products-single fix" >
 	                                                <div class="box-img-hover" >
 	                                                    <div class="type-lb">
 	                                                        <p class="new">new</p>
 	                                                    </div>
+	                                                   
 	                                                    <img src="images/imgMeal/${item.i_name }.png" class="img-fluid" alt="Image" id="rowcursor">
 	                                                    </a>
 	                                                </div>
-	                                                <div class="why-text" id="why-text">
+	                                                <div class="why-text " id="why-text">
+<%-- 	                                                    <span class="name">${item.i_name }</span> --%>
 	                                                    <h4 id="rowcursor">${item.i_name }</h4>
 	                                                    <input type="hidden" name="i_name" value="${item.i_name }">
 	                                                    <input type="hidden" name="i_id" value="${item.i_id }">
@@ -122,6 +129,12 @@
         </div>
     </div>
  </div>
+ 
+   
+ 
+ 
+
+ 
 <jsp:include page="00_footer.jsp"></jsp:include>
 </body>
 </html>

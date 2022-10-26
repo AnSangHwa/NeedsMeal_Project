@@ -12,6 +12,6 @@
 		<typeAlias type="com.human.project.domain.UsersVO" alias="users"/>	
 		<typeAlias type="com.human.project.domain.QnAVO" alias="qna"/>
 		<typeAlias type="com.human.project.domain.ReplayVO" alias="replay"/>
-		
+		<typeAlias type="com.human.project.domain.OrderVO" alias="order"/>
 	</typeAliases>
 </configuration>

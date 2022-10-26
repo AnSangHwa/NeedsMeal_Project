@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,117 +27,28 @@
             </div>
 
         <div class="row special-list">
+        <c:forEach items="${EventList}" var="event">
             <div class="col-lg-3 col-md-6 special-grid ongoing">
                 <div class="products-single fix">
-                    <div class="box-img-hover">
-                            
-                            
-                        <a href="01_eventView.do" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                          
-                        </div>
-                    </div>
+							<div class="box-img-hover">
+
+
+								<a href="01_eventView.do?e_name=${event.e_name}"><img
+									class="img-fluid" alt="Image"
+									src="images/eventList/${event.e_name}.png" alt=""></a>
+									<div style="color: black;"><strong> ${event.e_name}</strong> </div>
+								<div>
+									<div><small>이벤트 기간 : ${event.e_start} ~ <span class="endDate">${event.e_end}</span></small></div>
+								</div>
+							</div>
+						</div>
             </div>
+        
+        </c:forEach>
 
-                <div class="col-lg-3 col-md-6 special-grid end">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                         
-                            
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/이벤트종료.jpg" alt=""></a>
-                            
-                         
-                        </div>                        
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 special-grid ongoing">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                            
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 special-grid ongoing">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">                            
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                       
-                        </div>                        
-                    </div>
-                </div>
-				<div class="col-lg-3 col-md-6 special-grid ongoing">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                          
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 special-grid ongoing">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">                            
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                         
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 special-grid ongoing">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 special-grid ongoing">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">                            
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                            
-                        </div>                        
-                    </div>
-                </div>
-				
-				<div class="col-lg-3 col-md-6 special-grid ongoing">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">                            
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 special-grid ongoing">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 special-grid ongoing">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">                           
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                          
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 special-grid end">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <a href="01_eventView(err).jsp" ><img class="img-fluid" alt="Image" src="images/event_image/222959.jpg" alt=""></a>
-                           
-                        </div>                        
-                    </div>
-                </div>
+              
             </div>
         </div>
     </div>
@@ -144,4 +56,21 @@
 
 <jsp:include page="00_footer.jsp"></jsp:include>
 </body>
+<script>
+	let nowDate = "${nowDate}";
+		nowDate = Number(nowDate.replaceAll("-",""));
+	let endDate = $('.endDate');
+	for(let i = 0; i < endDate.length; i++ ){
+		
+  		let end = Number(endDate.eq(i).text().replaceAll(".",""));
+  		if(nowDate > end){
+  			
+  			$('.special-grid').eq(i).attr("class","col-lg-3 col-md-6 special-grid end");
+  		}
+	}
+  			
+  			
+ 	
+
+</script>
 </html>

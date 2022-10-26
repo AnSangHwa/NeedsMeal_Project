@@ -627,8 +627,10 @@
 		
 		$('.user-loginOK').click(function() {
 			if( $('.login-box > a').children('button').text() == '로그인'){
-				$('.user-loginOK').prop('href','#');
+				$('.user-loginOK').prop('type','button');
 				alert('로그인이 필요합니다.');
+			}else{
+				$('.user-loginOK').prop('type','submit');
 			}
 		})
                 //		----------------------- 밑에는 다른부분.

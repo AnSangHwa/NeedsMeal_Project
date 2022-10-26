@@ -9,7 +9,7 @@
 <title>여기서부터 시작</title>
 </head>
 <body>
-1
+
 <% response.sendRedirect("01_main.do"); %>
 </body>
 </html>

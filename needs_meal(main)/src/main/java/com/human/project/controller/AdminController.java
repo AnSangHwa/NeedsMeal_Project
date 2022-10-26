@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.human.project.domain.EventVO;
 import com.human.project.domain.ItemVO;
 import com.human.project.domain.MealVO;
+import com.human.project.domain.OrderVO;
+import com.human.project.domain.QnAVO;
 import com.human.project.service.AdminService;
 
 
@@ -157,11 +159,92 @@ public class AdminController {
 		return "04_adminMain";
 	}
 	
-	@RequestMapping("99_eventAdd.do")
-	public String eventAdd(EventVO eventvo) {
+	@RequestMapping("insertEvent.do")
+	public String insertEvent(EventVO eventvo) {
 		
-		adminService.eventADD(eventvo);
-		return "04_adminMain";
+		adminService.insertEvent(eventvo);
+		System.out.println("이벤트 시작일 : "+eventvo.getE_start());
+		System.out.println("이벤트 종료일 : "+eventvo.getE_end());
+		return "redirect:/04_adminEventManage.do";
 	}
+	
+	@RequestMapping("modifyEvent.do")
+	public String modifyEvent(EventVO eventvo) {
+		
+		adminService.modifyEvent(eventvo);
+		
+		return "redirect:/04_adminEventManage.do";
+	}
+	@RequestMapping("deleteEvent.do")
+	public String deleteEvent(EventVO eventvo) {
+		
+		adminService.deleteEvent(eventvo);
+		return "redirect:/04_adminEventManage.do";
+	}
+	
+	@RequestMapping("04_adminQnAList.do")
+	public String getQnAList(QnAVO vo, Model model){
+		
+		model.addAttribute("qnaList",adminService.getQnAList(vo));
+		
+		return "04_adminQnAList";
+	}
+	
+	@RequestMapping("04_adminQnAView.do")
+	public String getAdminQnAView(QnAVO vo, Model model) {
+		if(adminService.getAdminQnAViewCheck(vo) != null) {
+			model.addAttribute("qnACheck",1);
+		}
+		
+		model.addAttribute("qnAView",adminService.getAdminQnAView(vo)); 
+		
+		return null;
+		
+	}
+	
+	@RequestMapping("04_adminQnAForm.do")
+	public String adminQnAForm(QnAVO vo, Model model) {
+		
+					
+			model.addAttribute("vo",adminService.getAdminQnAView(vo));
+			
+			return "04_adminQnAForm";
+		
+		
+	}
+	
+	@RequestMapping("insertQnAAnswer.do")
+	public String insertQnAAnswer(QnAVO vo) {
+		
+			adminService.insertQnAAnswer(vo);
+		
+		return "redirect:/04_adminQnAList.do";
+	}
+	
+	@RequestMapping("04_adminEventManage.do")
+	public void eventList(EventVO vo, Model model) {
+		
+		model.addAttribute("eventList",adminService.eventList());
+				
+		
+	}
+	
+	@RequestMapping("04_admindeliveryManage.do")
+	public String deliveryList(Model model) {
+		model.addAttribute("deliveryList",adminService.deliveryList()); 
+		
+		return "04_admindeliveryManage";
+	}
+	
+	@RequestMapping("deliveryUpdate.do")
+	public String deliveryUpdate(OrderVO vo, Model model) {
+		
+				
+		 model.addAttribute("result",adminService.deliveryUpdate(vo));
+		
+		
+		return "redirect:/04_admindeliveryManage.do";
+	}
+	
 	
 }

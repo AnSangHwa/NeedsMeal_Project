@@ -16,7 +16,7 @@
 <body>
 <form action="99_MealUpdate.do">
  <section class="page_core">
-        <div class="area_right">
+        <div class="area_right" >
             <div class="text_style_head">밀키트 리스트</div>
             <br>
             <table>

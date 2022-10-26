@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -31,7 +32,6 @@
             
             <div class="col-lg-9">
                 <div class="date_check_box">
-                    <form method="get" name="DateSearch">
                         <h3> 조회기간 </h3>
                         <div class="date-check">
                             <input type="button" id="btn-today" value="오늘">
@@ -42,9 +42,10 @@
                             <input type="button" id="btn-year" value="1년">
                           
                         </div>
+                    <form method="get" name="DateSearch" action="DateSearch.do">
                      
                         <div class="date-check-calendar">
-                            <input type="text" id="datepicker1" style="width:27%" > ~ <input type="text" id="datepicker2" style="width:27%">
+                            <input type="text" id="datepicker1" name="startDate" style="width:27%" > ~ <input type="text" id="datepicker2" name="endDate" style="width:27%">
                             <input type="submit" class="btn_date_check" value="조회"> 
                         </div>  
                         
@@ -55,7 +56,7 @@
                     <h3>최근 주문 정보</h3>
                     <table class="recent-order-table">
                         <thead class="recent-order-table-head">
-                            <tr>
+                           <tr>
                                 <td>
                                     날짜/주문번호
                                 </td> 
@@ -69,31 +70,42 @@
                                     주문상태
                                 </td>
                                 <td >
-                                    확인/리뷰
+                  	배송지정보
                                 </td>
+                       
                             </tr>
                         </thead>
                         <tbody>
+                        <c:forEach items="${orderList}" var="order">
+                        
                             <tr>
                                 <td>
-                                    1111
+                                    ${order.o_date} / ${order.o_id} 
                                 </td>
                                 <td>
-                                    2222
+                                    ${order.m_name} <c:if test="${order.o_cnt-1 != 0}">외 ${order.o_cnt-1}</c:if> / 없음 
                                 </td>
                                 <td>
-                                    3333
+                                    ${order.o_price} / ${order.o_cnt}
                                 </td>
                                 <td>
-                                    4444
+                                   <c:choose>
+                                   <c:when test="${order.o_status == 0}">결제완료</c:when>
+                                   <c:when test="${order.o_status == 1}">배송중</c:when>
+                                   <c:when test="${order.o_status == 2}">배송완료</c:when>
+                                   </c:choose> 
                                 </td>
                                 <td>
-                                    55555
+                                <a href="deliveryInfo.do?o_id=${order.o_id}">확인</a>
                                 </td>
+                           
                             </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
+                
+                
             </div>                
         </div>
        
@@ -102,5 +114,9 @@
     <!-- End My Account -->
  
 <jsp:include page="00_footer.jsp"></jsp:include>
+<script>
+
+
+</script>
 </body>
 </html>

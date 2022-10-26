@@ -2,6 +2,7 @@ package com.human.project.service;
 
 import com.human.project.domain.ItemVO;
 import com.human.project.domain.MealVO;
+import com.human.project.domain.OrderVO;
 import com.human.project.domain.UsersVO;
 
 public interface PayService {
@@ -16,6 +17,11 @@ public interface PayService {
 	MealVO getPayMeal(MealVO mealvo);
 
 //	OrderListVO 주문에 관한 메소드
+	void insertOrder(OrderVO vo);
+	void mealCntUpdate(MealVO mealVo);
+	void itemCntUpdate(ItemVO itemVo);
+	OrderVO orderInfo(OrderVO vo);
+	
 	
 	
 }

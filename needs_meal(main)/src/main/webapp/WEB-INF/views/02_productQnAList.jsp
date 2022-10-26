@@ -50,10 +50,11 @@
                             <input type="button" id="btn-3month" value="3개월">
                             <input type="button" id="btn-year" value="1년">
                         </div>
-                     <form method="get" name="DateSearch">
+                     <form action="99_productQnAList.do" method="get" name="DateSearch">
                         <div class="info-date-check-calendar">
                             <input type="text" id="datepicker1" name="startDate" style="width:27%" > ~ <input type="text" id="datepicker2" name="endDate" style="width:27%">
-                            <input type="button" class="btn_date_check" id="mypageSubmitbtn" value="조회"> 
+<!--                             <input type="button" class="btn_date_check" id="mypageSubmitbtn" value="조회">  -->
+							<button type="submit">조회</button>
                         </div>  
                         
                     </form>
@@ -91,7 +92,7 @@
                         <c:forEach items="${qnaList}" var="qna">
 						<tr>
 							<td>${qna.q_id}</td>
-							<td><a href="02_QnAView.do?q_id=${qna.q_id}">${qna.q_title }</a></td>
+							<td style="text-align: left"><a href="02_QnAView.do?q_id=${qna.q_id}">${qna.q_title }</a></td>
 							<td>${qna.q_date }</td>						
 						</tr>	
 						</c:forEach>	
@@ -121,4 +122,5 @@
  
 <jsp:include page="00_footer.jsp"></jsp:include>
 </body>
+
 </html>

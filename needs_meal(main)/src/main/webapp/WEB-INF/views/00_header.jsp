@@ -18,7 +18,7 @@
 <!-- Responsive CSS -->
 <link rel="stylesheet" href="css/responsive.css">
 <!-- Custom CSS -->
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/custom.css?after">
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/main-page.css">
 <link rel="stylesheet" href="css/material_view_page.css">
@@ -35,7 +35,8 @@
 		<div class="container-fluid">
 			<div class="row">
 
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="col-12 headerColor">
+					
 					<div class="login-box">
 						<a href="05_login.do">
 							<button class="btn btn-outline-info">로그인</button>
@@ -56,15 +57,7 @@
 					src="images/로고.png" class="logo" alt=""></a>
 			</div>
 			<div class="col-5">
-				<div class="container">
-					<div class="input-group">
-						<input name="searchBox" type="text" class="form-control"
-							placeholder="검색"> <span class="input-group-addon">
-							<label for="searchBox">&nbsp;&nbsp;&nbsp;&nbsp;<i
-								class="fa fa-search"></i></label>
-						</span> <span class="input-group-addon close-search"></span>
-					</div>
-				</div>
+				
 			</div>
 
 		</div>
@@ -112,10 +105,10 @@
                                 <li><a href="99_item_CtgList.do?ctg_id=2007"> 면 </a></li>
                                 <li><a href="99_item_CtgList.do?ctg_id=2008"> 그외 </a></li>            
 							</ul></li>
-						<li class="dropdown active"><a href="01_productList.do"
+						<li class="dropdown active"><a href="01_bestMealList.do"
 							class="nav-link">베스트상품</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="01_productList.do">신메뉴</a></li>
+							href="01_newMealList.do">신메뉴</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="01_communityList.do">고객소통</a></li>
 						<li class="nav-item"><a class="nav-link"
@@ -198,7 +191,8 @@
 	<!-- End Navigation -->
 
 	<!-- End Main Top -->
-	<!-- 여기까지 헤더---------------------------------------------------------------------------------------------------- -->
+	<!-- 여기까지 헤더---------- -->
+
 </body>
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script>
@@ -210,7 +204,7 @@
 		$('.login-box a button').attr("style","display: none");
 		$('.login-box a button').text("");
 		$('.login-box a').text("안녕하세요!"+"  "+session+" 님");
-		$('.login-box a').attr("href","")
+		$('.login-box a').attr("href","02_MyPage.do")
 	}else{
 				
 		$('.good-login').attr("style","display: none");

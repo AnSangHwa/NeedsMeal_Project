@@ -33,8 +33,8 @@
 				<div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                     <div class="product-categori">
                         <div class="search-product">
-                            <form action="#">
-                                <input class="form-control" placeholder="Search here..." type="text">
+                            <form action="99_serchCommu.do">
+                                <input class="form-control" placeholder="Search here..." name="serch" type="text">
                                 <button type="submit"> <i class="fa fa-search"></i> </button>
                             </form>
                         </div>
@@ -58,7 +58,17 @@
                                     <div class="collapse" id="sub-men2" data-parent="#list-group-men">
                                         <div class="list-group">
                                             <a href="99_communitiyList.do?ctg_id=4000" class="list-group-item list-group-item-action"> 전체상품후기 </a>
-                                            <a href="99_myReviewList.do?ctg_id=4000&u_id=${u_id }" class="list-group-item list-group-item-action user-loginOK"> 내가쓴글 </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-collapse sub-men">
+                                    <a class="list-group-item commu list-group-item-action" href="#sub-men3" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">내글보기</a>
+                                    <div class="collapse" id="sub-men3" data-parent="#list-group-men">
+                                        <div class="list-group">
+                                            <form action="99_myReviewList.do" method="post">
+                                            <input type="hidden" value="${u_id }"> 
+                                            <button type="submit" class="list-group-item list-group-item-action user-loginOK"> 내가쓴글 </button>
+                                        	</form>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +95,7 @@
 							<tr>
 								<td>${commu.ctg_id }${commu.c_id }</td>
 								<td>${commu.ctg_name }</td>
-								<td>${commu.u_id }</td>					
+								<td>${commu.u_name }</td>					
 								<td><a href="01_communityView.do?c_id=${commu.c_id }">${commu.c_title }</a></td>					
 								<td>${commu.c_cnt }</td>					
 								<td>${commu.c_date }</td>

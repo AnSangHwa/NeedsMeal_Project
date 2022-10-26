@@ -9,6 +9,8 @@ import com.human.project.dao.AdminDAO;
 import com.human.project.domain.EventVO;
 import com.human.project.domain.ItemVO;
 import com.human.project.domain.MealVO;
+import com.human.project.domain.OrderVO;
+import com.human.project.domain.QnAVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -75,8 +77,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void eventADD(EventVO eventvo) {
-		adminDAO.eventAdd(eventvo);
+	public void insertEvent(EventVO eventvo) {
+		adminDAO.insertEvent(eventvo);
 		
 	}
 
@@ -84,6 +86,60 @@ public class AdminServiceImpl implements AdminService {
 	public List<ItemVO> getAdminItemCtgList(ItemVO itemvo) {
 		return adminDAO.getAdminItemCtgList(itemvo);
 	}
+
+	@Override
+	public List<QnAVO> getQnAList(QnAVO vo) {
+		// TODO Auto-generated method stub
+		return adminDAO.getQnAList(vo);
+	}
+
+	@Override
+	public QnAVO getAdminQnAView(QnAVO vo) {
+		// TODO Auto-generated method stub
+		return adminDAO.getAdminQnAView(vo);
+	}
+
+	@Override
+	public void insertQnAAnswer(QnAVO vo) {
+		adminDAO.insertQnAAnswer(vo);
+	}
+
+	@Override
+	public QnAVO getAdminQnAViewCheck(QnAVO vo) {
+		// TODO Auto-generated method stub
+		return adminDAO.getAdminQnAViewCheck(vo);
+	}
+
+	@Override
+	public List<EventVO> eventList() {
+		// TODO Auto-generated method stub
+		return adminDAO.eventList();
+	}
+
+	@Override
+	public void modifyEvent(EventVO eventvo) {
+		
+		adminDAO.modifyEvent(eventvo);
+	}
+
+	@Override
+	public void deleteEvent(EventVO eventvo) {
+
+		adminDAO.deleteEvent(eventvo);
+	}
+
+	@Override
+	public List<OrderVO> deliveryList() {
+		return adminDAO.deliveryList();
+	}
+
+	@Override
+	public int deliveryUpdate(OrderVO vo) {
+		// TODO Auto-generated method stub
+		return adminDAO.deliveryUpdate(vo);
+	}
+
+	
 
 	
 	

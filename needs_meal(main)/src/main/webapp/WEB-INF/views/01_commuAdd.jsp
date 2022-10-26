@@ -38,15 +38,9 @@
                        </div>
                    </div>  
                    <div style="display: none;" class="row line review-name">
-                       <div class="col-2"> 리뷰상품 </div>
+                       <div class="col-2"> 상품이름 </div>
                        <div class="col-3">     
                             <input type="text" id="review-m" name="" placeholder="상품명" style="width: 200px;">
-                       </div>
-                   </div> 
-                   <div style="display: none;" class="row line inquiry-name">
-                       <div class="col-2"> 문의상품 </div>
-                       <div class="col-3">     
-                            <input type="text" id="inquiry-m" name="" placeholder="상품명" style="width: 200px;">
                        </div>
                    </div> 
                    <div style="display: none;" class="row line free-name">

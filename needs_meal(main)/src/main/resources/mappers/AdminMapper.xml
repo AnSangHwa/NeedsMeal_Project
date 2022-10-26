@@ -11,11 +11,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectItem" resultType="item">
 		SELECT *
 		  FROM item
+		  ORDER BY i_id DESC
 	</select>
 	<select id="selectItemCtg" parameterType="item" resultType="item">
   		SELECT *
   		  FROM item
   		 WHERE ctg_id = #{ctg_id}
+  		 ORDER BY i_id DESC
   	</select>
 	<select id="selectItemOne" parameterType="item" resultType="item">
 		SELECT *
@@ -37,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<select id="selectMeal" resultType="meal">
 		SELECT *
-		  FROM meal
+		  FROM meal		 
 	</select>
 	<select id="selectMealOne" parameterType="meal" resultType="meal">
 		SELECT *
@@ -57,7 +59,61 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	</delete>
   	<insert id="insertEvent" parameterType="event">
   		INSERT INTO event
-  		VALUES ( #{e_name}, #{e_content}, sysdate, sysdate+7, 7)
+  		VALUES ( #{e_name}, #{e_content}, #{e_start}, #{e_end}, to_date(#{e_end},'YYYY-MM-DD') - to_date(#{e_start},'YYYY-MM-DD')  )
   	</insert>
+  	
+  	<select id="QnAList" parameterType="qna" resultType="qna">
+  		SELECT q_date, q_id, q_title 
+ 		  FROM qna
+ 		  ORDER BY q_id DESC
+  	</select>
+  	<select id="QnAView" parameterType="qna" resultType="qna">
+  		SELECT *
+		  FROM qna
+		 WHERE q_id = #{q_id}
+  		  
+  	
+  	</select>
+  	
+  	<insert id="QnAAnswer" parameterType="qna">
+  		INSERT INTO qna
+  		VALUES (${q_id}-1, #{ctg_id}, #{goods} ,'admin', #{q_title}, #{q_content}, sysdate )
+  	</insert>
+  	
+  	
+  	<select id="QnAViewCheck" parameterType="qna" resultType="qna">
+  		SELECT *
+		  FROM qna
+		 WHERE q_id = ${q_id}-1
+  	</select>
+  	<select id="eventList" resultType="event">
+  		SELECT *
+  		  FROM event
+  		  ORDER BY e_start DESC
+  	
+  	</select>
+  	<update id="modifyEvent" parameterType="event">
+  		UPDATE event
+  		  SET e_content = #{e_content}, e_start = #{e_start}, e_end = #{e_end} , e_date = to_date(#{e_end},'YYYY-MM-DD') - to_date(#{e_start},'YYYY-MM-DD')
+  		  WHERE e_name = #{e_name}  
+  	</update>
+  	
+  	<delete id="deleteEvent" parameterType="event">
+  		DELETE
+  		  FROM event
+  		  WHERE e_name = #{e_name}
+  	
+  	</delete>
+  	<select id="deliveryList" resultType="order">
+  		SELECT *
+  		  FROM orders	
+  		ORDER BY o_id DESC  	
+  	</select>
+  	<update id="deliveryUpdate" parameterType="order">
+  		UPDATE orders
+  		  SET o_status = #{o_status}
+  		WHERE o_id = #{o_id}
+  	</update>
+  	
   	
 </mapper>

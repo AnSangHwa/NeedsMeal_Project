@@ -16,6 +16,7 @@ public class ItemVO {
     private String i_date; 			// 생성일/수정일
 	private int req_cnt;			// 밀키트 뷰에서 증가되는 필수 테이블 수치
 	private int base_cnt;			// 밀키트 뷰에서 증가되는 기본 테이블 수치
+	private int cart_cnt;			// 카트에 들어가는 vo테이블의 숫자
     /*
 	    카테코리 코드
 	    총 4자리로 구성

@@ -26,7 +26,9 @@ $('#slides-shop1').superslides({
 $(".cover-slides1 ul li").append("<div class='overlay-background'></div>");
 
 
-
+$('.carousel').carousel({
+	  interval: 2000 //기본 5초
+	})
 
 
 

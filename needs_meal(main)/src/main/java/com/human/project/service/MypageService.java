@@ -2,11 +2,10 @@ package com.human.project.service;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.human.project.domain.CommunityVO;
 import com.human.project.domain.ItemVO;
 import com.human.project.domain.MealVO;
+import com.human.project.domain.OrderVO;
 import com.human.project.domain.QnAVO;
 import com.human.project.domain.ReplayVO;
 import com.human.project.domain.UsersVO;
@@ -27,7 +26,7 @@ public interface MypageService {
 
 			
 //	커뮤니티 내가쓴 글 조회
-	List<QnAVO> getMypageQnA();
+	List<QnAVO> getMypageQnA(QnAVO vo);
 	
 //  내가 쓴 댓글 조회
 	List<ReplayVO> getMypageReview(String userId);
@@ -37,4 +36,16 @@ public interface MypageService {
 	public CommunityVO reView(CommunityVO vo);
 	public void insertQnA(QnAVO vo);
 	public QnAVO qnAView(QnAVO vo);
+	public void deleteQnA(QnAVO vo);
+	public QnAVO modifyQnAForm(QnAVO vo);
+	public void modifyQnA(QnAVO vo);
+	public QnAVO modifyQnAAnswerCheck(QnAVO vo);
+//	날짜를 이용한 검색기능
+	List<QnAVO> selectdateQnA(QnAVO vo);
+	
+	List<OrderVO> orderList(OrderVO vo);
+	
+	OrderVO deliveryInfo(OrderVO vo);
+	
+	List<OrderVO> orderDateSearch(OrderVO vo);
 }

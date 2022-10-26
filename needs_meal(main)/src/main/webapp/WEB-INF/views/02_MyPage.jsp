@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,10 +29,10 @@
                     <div class = "my-info">
                     <ul>    
                         <li>
-                            <img src="images/grade/grade${u_grade}.jpg">
+                            <img src="images/grade/grade${user.u_grade}.jpg">
                         </li>
                         <li>
-                            <h3>적립금 <a href="#" style="font-size: 50px;">${u_point}</a>원</h3>
+                            <h3>적립금 <a href="#" style="font-size: 50px;">${user.u_point}</a>원</h3>
                         </li>
                     </ul>
                     </div>
@@ -52,53 +53,76 @@
                                     <td >
                                         주문상태
                                     </td>
-                                    <td >
-                                        확인/리뷰
-                                    </td>
+                  
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        1111
-                                    </td>
-                                    <td>
-                                        2222
-                                    </td>
-                                    <td>
-                                        3333
-                                    </td>
-                                    <td>
-                                        4444
-                                    </td>
-                                    <td>
-                                        55555
-                                    </td>
-
-                                </tr>
+                               <c:forEach items="${orderList}" var="order" end="0">
+                        
+                            <tr>
+                                <td>
+                                    ${order.o_date} / ${order.o_id} 
+                                </td>
+                                <td>
+                                    ${order.m_name} <c:if test="${order.o_cnt-1 != 0}">외 ${order.o_cnt-1}</c:if> / 없음 
+                                </td>
+                                <td>
+                                    ${order.o_price} / ${order.o_cnt}
+                                </td>
+                                <td>
+                                   <c:choose>
+                                   <c:when test="${order.o_status == 0}">결제완료</c:when>
+                                   <c:when test="${order.o_status == 1}">배송중</c:when>
+                                   <c:when test="${order.o_status == 2}">배송완료</c:when>
+                                   </c:choose> 
+                                </td>
+                           
+                            </tr>
+                        </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                    <div class="recent-view">
-                        <h3>최근 본 상품</h3>
-                        <table class="recent-view-table" >  
-                                <tr>
-                                    <td >
-                                        <img src="images/menu1.jpg" style="width:200px; height:200px;"> 
-                                    </td> 
-                                    <td >                               
-                                        <img src="images/menu2.jpg" style="width:200px; height:200px;">
-                                    </td>
-                                    <td >
-                                        <img src="images/menu3.jpg" style="width:200px; height:200px;">
-                                    </td>
-                                    <td >
-                                        <img src="images/menu4.jpg" style="width:200px; height:200px;">
-                                    </td>
-                                    
-                                </tr>
-                        </table>
-                    </div>
+                     <br>
+                    <div class="QnA-tb">
+                     <h3 style="display: inline-block;">내 문의 정보&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+                     <a href="02_productQnAList.do"><button>내 문의 전체 보기</button></a>
+                    <table class="QnA-table" >
+                         <colgroup>
+					            <col width="10%">
+					            <col width="60%">
+					            <col width="30%">
+           
+        				</colgroup>
+                        <thead class="QnA-table-header">
+	                            <tr>
+	                                <td >
+	                                    문의번호
+	                                </td> 
+	                                <td >                               
+	                                    제목
+	                                </td>
+	                                <td >
+	                                    문의날짜
+	                                </td>                             
+	                            </tr>
+                         
+                        </thead>
+                       
+                        <tbody>
+                        <c:forEach items="${qnaList}" var="qna" end="0">
+						<tr>
+							<td>${qna.q_id}</td>
+							<td style="text-align: left"><a href="02_QnAView.do?q_id=${qna.q_id}">${qna.q_title }</a></td>
+							<td>${qna.q_date }</td>						
+						</tr>	
+						</c:forEach>	
+
+                        </tbody>
+
+                    </table>
+                    
+
+                </div>
                 </div>       
             </div>
         </div>  

@@ -15,27 +15,20 @@
             <table>
                 <tr>
                     <td>주문번호</td>
-                    <td>0000000000</td>
+                    <td>${orderInfo.o_id}</td>
                 </tr>
                 <tr>
                     <td>주문 접수일</td>
-                    <td>2022-09-23</td>
+                    <td>${orderInfo.o_date}</td>
                 </tr>
-                <tr>
-                    <td>출고예상일</td>
-                    <td>2022-09-99</td>
-                </tr>
-                <tr>
-                    <td>수령예상일</td>
-                    <td>2099-99-99</td>
-                </tr>
+                               
                 <tr>
                     <td>결제수단</td>
-                    <td>계좌이체</td>
+                    <td>카카오페이머니</td>
                 </tr>
             </table>
             <br>
-            <a href="#"><button class="btn btn-outline-primary"> 주문내역보기 </button></a>
+            <a href="02_orderList.do"><button class="btn btn-outline-primary"> 주문내역보기 </button></a>
             <a href="01_main.do"><button class="btn btn-outline-info"> 홈으로 돌아가기 </button></a>
         </div>
     </div>

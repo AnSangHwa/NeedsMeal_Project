@@ -16,7 +16,7 @@
 <body>
 <form action="99_itemUpdate.do">
  <section class="page_core">
-        <div class="area_right">
+        <div class="area_right" style="overflow:scroll; height: 450px;">
             <div class="text_style_head">재료 리스트</div>
             <br>
             <table>

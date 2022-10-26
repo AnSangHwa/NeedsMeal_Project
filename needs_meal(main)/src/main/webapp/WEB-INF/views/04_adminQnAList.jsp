@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,16 +26,18 @@
                     <thead>
                         <tr>
                             <th class="table_head th_">문의번호</th>
-                            <th class="table_head th_">고객명</th>
                             <th class="table_head th_">제목</th>
+                            <th class="table_head th_">문의날짜</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>고객1</td>
-                            <td>문의드립니다.</td>
-                        </tr>
+                   	<c:forEach items="${qnaList}" var="qna">
+						<tr>
+							<td>${qna.q_id}</td>
+							<td style="text-align: left"><a style="color: white;" href="04_adminQnAView.do?q_id=${qna.q_id}">${qna.q_title }</a></td>
+							<td>${qna.q_date }</td>						
+						</tr>	
+					</c:forEach>	
                     </tbody>
                 </table>
 
@@ -45,5 +48,6 @@
 
  
 </body>
+
 
 </html>

@@ -9,12 +9,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT *
 		FROM community
 		WHERE ctg_id LIKE '4%' AND u_id = #{userId}
+		ORDER BY c_date DESC
 	</select>
 	
-	<select id="mypage-qna" resultType="qna">
+	<select id="mypage-qna" parameterType="qna" resultType="qna">
 		SELECT q_date, q_id, q_title 
-		from QNA
-		ORDER BY q_date DESC
+		FROM qna WHERE q_id in ((SELECT q_id-1 FROM qna WHERE u_id = #{u_id}))
+					 OR q_id in ((SELECT q_id FROM qna WHERE u_id = #{u_id}))
+				ORDER BY q_id desc
 	</select>
 	
 	<update id="modifyAccount" parameterType="users">
@@ -70,15 +72,69 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	<insert id="insertQnA" parameterType="qna">
 		INSERT INTO qna
-		VALUES( seq_qna.nextval, #{u_id} , #{q_title}, #{q_content}, sysdate)
-	
-	
+		VALUES( seq_qna.nextval||9, #{ctg_id}, #{goods} , #{u_id} , 'Q : ${q_title}', #{q_content}, sysdate)
 	</insert>
 	
 	<select id="qnAView" parameterType="qna" resultType="qna">
 		SELECT *
 		  FROM qna
 		 WHERE q_id = #{q_id}
+	
+	</select>
+	<delete id="deleteQnA" parameterType="qna">
+	{call
+		 	declare
+		 	begin
+		 	
+		DELETE
+		  FROM qna
+		  WHERE q_id = #{q_id};
+		  
+		  DELETE
+		  FROM qna
+		  WHERE q_id = ${q_id}-1;
+		  
+		   end
+		} 
+	
+	</delete>
+	<update id="modifyQnA" parameterType="qna">
+		UPDATE qna
+		   SET q_title = #{q_title}, q_content = #{q_content}
+		 WHERE q_id = #{q_id}
+	
+	</update>
+	<select id="QnAAnswerCheck" parameterType="qna" resultType="qna">
+		SELECT *
+		  FROM qna
+		 WHERE q_id = ${q_id}-1
+	
+	</select>
+	<select id="selectQnaDate" parameterType="qna" resultType="qna">
+		SELECT *
+        FROM qna 
+       WHERE (q_id in ((SELECT q_id-1 FROM qna WHERE u_id = #{u_id}))
+           or  q_id in ((SELECT q_id FROM qna WHERE u_id = #{u_id})))
+         AND q_date <![CDATA[>=]]> #{startDate} and q_date <![CDATA[<=]]> to_date(#{endDate},'YYYY-MM-DD')+0.99999
+       ORDER BY q_id DESC
+	</select>
+	
+	<select id="selectOrderList" parameterType="order" resultType="order">
+		SELECT *
+		FROM orders
+		WHERE u_id = #{u_id}
+		ORDER BY o_date DESC
+	
+	</select>
+	<select id="deliveryInfo" parameterType="order" resultType="order">
+		SELECT *
+		FROM orderList
+		WHERE o_id = #{o_id}			
+	</select>
+	<select id="orderDateSearch" parameterType="order" resultType="order">
+		SELECT *
+		FROM orders
+		WHERE u_id = #{u_id} AND TO_CHAR(o_date,'YYYY-MM-DD') BETWEEN #{startDate} AND #{endDate}
 	
 	</select>
 

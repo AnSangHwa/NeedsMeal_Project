@@ -15,12 +15,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	     order by c_date desc
 	</select>
 	<select id="selectCommuCtg" parameterType="commu" resultType="commu">
-		select community.*,category.ctg_name 
-		  from community,category
-  	     where community.ctg_id = category.ctg_id
+		select community.*,category.ctg_name,Users.u_Name
+		  from community,category,users
+		 where community.u_id = Users.u_Id
+  	       and community.ctg_id = category.ctg_id
   	       and community.ctg_id = #{ctg_id}
   	       order by c_date desc
 	</select>
+	<select id="selectReviewList" parameterType="commu" resultType="commu">
+		select community.*,category.ctg_name,Users.u_Name
+		  from community,category,users
+		 where community.u_id = Users.u_Id
+  	       and community.ctg_id = category.ctg_id
+  	       and community.ctg_id = #{ctg_id}
+  	       and community.m_name = #{m_name}
+  	       order by c_date desc
+	</select>
+	
 	<select id="selectMeal" resultType="meal">
 		select * 
 		  from meal
@@ -55,5 +66,119 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT *
 		  FROM item
 		 WHERE ctg_id = #{ctg_id}
+	</select>
+	<select id="myReview" parameterType="commu" resultType="commu">
+		SELECT community.*,category.ctg_name 
+		  from community,category
+  	     where community.ctg_id = category.ctg_id
+  	       and u_id = #{u_id} 
+  	     order by c_date desc
+	</select>
+	<update id="increaseView" parameterType="commu">
+		UPDATE community
+		   SET c_cnt = c_cnt+1
+		 WHERE c_id = #{c_id}  
+	</update>
+	<select id="selectView" parameterType="commu" resultType="commu">
+		 SELECT community.*,category.ctg_name,users.u_name 
+		  from community,category,users
+  	     where community.ctg_id = category.ctg_id
+          and users.u_id = community.u_id
+           and c_id = #{c_id}
+	</select>
+	<select id="newMealList" resultType="meal">
+		select * from meal
+ 		where m_date > sysdate-7
+	</select>
+	<select id="bestMealList" resultType="meal">
+		select * from meal
+		where m_sell_cnt > 5
+	</select>
+	<select id="selectReplay" parameterType="replay" resultType="replay">
+		SELECT reply.*,users.u_name
+		  FROM reply,users
+		 WHERE c_id = #{c_id}
+		   AND reply.u_id = users.u_id
+		   AND reply.r_group = 0
+		 ORDER BY r_id DESC
+	</select>
+	<insert id="insertReplay" parameterType="replay">
+		INSERT INTO reply
+		VALUES ( #{c_id}||00||seq_reply.nextval , #{c_id}, #{u_id}, 0, #{r_content} ,sysdate)
+	</insert>
+	<update id="updateCommu" parameterType="commu">
+		UPDATE community
+		   SET c_title = #{c_title}, c_content = #{c_content}
+		 where c_id = #{c_id}  
+	</update>
+	<delete id="deleteCommu" parameterType="commu">
+	   DELETE community
+	    WHERE c_id = #{c_id}
+	</delete>
+	<insert id="insertReplayReplay" parameterType="replay">
+		INSERT INTO reply
+		VALUES ( #{c_id}||00||seq_reply.nextval , #{c_id}, #{u_id},#{r_id}, #{r_content} ,sysdate  )
+	</insert>
+	<select id="selectReplayReplay" parameterType="replay" resultType="replay">
+		SELECT reply.*,users.u_name
+		  FROM reply,users
+		 WHERE c_id = #{c_id}
+		   AND reply.u_id = users.u_id
+		   AND reply.r_group = #{r_group}
+		 ORDER BY r_id
+	</select>
+	<update id="updateReplay" parameterType="replay">
+		UPDATE reply
+		   SET r_content = #{r_content}
+		 WHERE c_id = #{c_id}
+		   AND u_id = #{u_id}
+		   AND r_id = #{r_id}  
+	</update>
+	<delete id="deletReplay" parameterType="replay">
+		DELETE reply
+		 WHERE c_id = #{c_id}
+		   AND u_id = #{u_id}
+		   AND r_id = #{r_id}
+	</delete>
+	<delete id="deletReplayReplay" parameterType="replay">
+		DELETE reply
+		 WHERE c_id = #{c_id}
+		   AND r_group = #{r_id}
+	</delete>
+	<select id="getEventList" resultType="event">
+		SELECT e_name,e_content,TO_CHAR(e_start,'YYYY.MM.DD')"e_start",TO_CHAR(e_end,'YYYY.MM.DD')"e_end",e_date
+		 FROM event
+		 ORDER BY e_start desc
+	
+	</select>
+	<select id="getEvent" parameterType="event" resultType="event">
+	
+		SELECT *
+		 FROM event
+		 WHERE e_name = #{e_name}
+	</select>
+	<select id="selectReViewCommu" parameterType="commu" resultType="commu">
+		SELECT *
+		  FROM community
+		 WHERE m_name = #{m_name}
+	</select>
+	<select id="selectViewqna" parameterType="qna" resultType="qna">
+		Select *
+		  FROM qna
+		 where goods = #{goods}
+	</select>
+	<update id="updateMeal" parameterType="commu">
+      UPDATE meal
+         SET m_review_cnt = (select count(m_name) from community where m_name = #{m_name} and ctg_id = 4000)
+       WHERE m_name = #{m_name}
+   </update>
+	<select id="selectSerch" parameterType="commu" resultType="commu">
+		select community.*,category.ctg_name,Users.u_Name
+		  from community,category,users
+  	     where community.ctg_id = category.ctg_id
+           and community.u_id = Users.u_Id
+           and (m_name like '%'||#{serch}||'%' or u_name like '%'||#{serch}||'%' 
+            or c_content like '%'||#{serch}||'%' or c_title like '%'||#{serch}||'%')
+  	     order by c_date desc
 	</select>
 </mapper>

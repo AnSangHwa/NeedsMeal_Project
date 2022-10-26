@@ -1,8 +1,8 @@
 package com.human.project.dao;
 
-import com.human.project.domain.CommunityVO;
 import com.human.project.domain.ItemVO;
 import com.human.project.domain.MealVO;
+import com.human.project.domain.OrderVO;
 import com.human.project.domain.UsersVO;
 
 public interface PayDAO {
@@ -17,5 +17,8 @@ public interface PayDAO {
 	MealVO getPayMeal(MealVO mealvo);
 
 //	OrderListVO 주문에 관한 메소드
-	
+	void insertOrder(OrderVO orderVo);
+	void mealCntUpdate(MealVO mealVo);
+	void itemCntUpdate(ItemVO itemVo);
+	OrderVO orderInfo(OrderVO vo);
 }

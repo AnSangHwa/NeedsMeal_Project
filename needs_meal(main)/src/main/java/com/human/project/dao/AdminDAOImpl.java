@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.human.project.domain.EventVO;
 import com.human.project.domain.ItemVO;
 import com.human.project.domain.MealVO;
+import com.human.project.domain.OrderVO;
+import com.human.project.domain.QnAVO;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -75,7 +77,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public void eventAdd(EventVO eventvo) {
+	public void insertEvent(EventVO eventvo) {
 		mybatis.insert("admin.insertEvent",eventvo);
 		
 	}
@@ -83,6 +85,58 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public List<ItemVO> getAdminItemCtgList(ItemVO itemvo) {
 		return mybatis.selectList("admin.selectItemCtg",itemvo);
+	}
+
+	@Override
+	public List<QnAVO> getQnAList(QnAVO vo) {
+		return mybatis.selectList("admin.QnAList",vo);
+	}
+
+	@Override
+	public QnAVO getAdminQnAView(QnAVO vo) {
+		
+		return mybatis.selectOne("admin.QnAView",vo);
+	}
+
+	@Override
+	public void insertQnAAnswer(QnAVO vo) {
+		mybatis.insert("admin.QnAAnswer",vo);
+	}
+
+	@Override
+	public QnAVO getAdminQnAViewCheck(QnAVO vo) {
+		
+		return mybatis.selectOne("admin.QnAViewCheck",vo);
+	}
+
+	@Override
+	public List<EventVO> eventList() {
+		// TODO Auto-generated method stub
+		return mybatis.selectList("admin.eventList");
+	}
+
+	@Override
+	public void modifyEvent(EventVO eventvo) {
+		
+		mybatis.update("admin.modifyEvent",eventvo);
+				
+	}
+
+	@Override
+	public void deleteEvent(EventVO eventvo) {
+
+		mybatis.delete("admin.deleteEvent",eventvo);
+	}
+
+	@Override
+	public List<OrderVO> deliveryList() {
+		// TODO Auto-generated method stub
+		return mybatis.selectList("admin.deliveryList");
+	}
+
+	@Override
+	public int deliveryUpdate(OrderVO vo) {
+		return mybatis.update("admin.deliveryUpdate",vo);
 	}
 
 	

@@ -18,34 +18,40 @@
 				<div class="row">
 					<div class="col-lg-4 col-md-12 col-sm-12">
 						<div class="footer-top-box">
-							<h3>운영시간</h3>
+							<h3>니즈밀 소개</h3>
 							<ul class="list-time">
-								<li>월 ~ 금: 08:00 ~ 17:00  </li>
-                                <li>주말: <span>Closed</span></li>
+							<li>저희 홈페이지는 시중에서 판매중인 </li>
+							<li>밀키트와는 달리 소비자 분들이 </li>
+							<li>밀키트를 구성 하는 기초재료 외   </li>
+							<li>필요한 재료들만 구매 할 수 있는 </li>
+							<li>점이 다른 홈페이지와 차별점입니다. </li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-12 col-sm-12">
 						<div class="footer-top-box">
-							<h3>이 사이트에 대하여</h3>
-							<p>이 사이트의 제작은...</p>
+							<h3>운영시간</h3>
+							<ul class="list-time">
+								<li>월 ~ 금: 09:00 ~ 18:00  </li>
+                                <li>주말 및 공휴일 <span>휴무</span></li>
+							</ul>
 						</div>
 					</div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-top-box">
-							<h3>주식회사 XXX</h3>
-							<p>대표자: 누구?</p>
-							<p>회사 위치 : 어디야?</p>
-							<p>회사 번호 : 전화해!</p>
-							<p>이메일 : 이메일@naver.com</p>
-						</div>
+							<h3>주식회사 니즈밀</h3>
+							<p>대표자: 나대표</p>
+							<p>회사 위치 : 경기도 수원시 팔달구 중부대로 100 4층</p>
+							<p>회사 번호 : 031-222-2222</p>
+							<p>이메일 : 2mail@gmail.com</p>
+							
+							</div>
 					</div>
                 </div>
             </div>
         </div>
     </footer>
     <!-- End Footer  -->
-
 
 <!--     ALL JS FILES -->
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -79,6 +85,7 @@
      <script src="js/date.js"></script>
      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <script src="js/01_itemList.js"></script>
    
 </body>
 </html>

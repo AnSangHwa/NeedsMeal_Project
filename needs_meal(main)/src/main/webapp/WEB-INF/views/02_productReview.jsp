@@ -37,19 +37,20 @@
                     <h1>상품후기 </h1>
                 </div>              
 
-                <div class="info-review-Write">                    
-                    <input type="button" value="글쓰기 ">
+                <div class="info-QnA-Write" style="position: relative; right: 50px;">                    
+                    <input type="button" value="글쓰기 " onclick="location.href='02_reviewAdd.do'">
                 </div>
 
 
                 <div class="Review-tb">
                     <table class="Review-table">
+                    
                         <thead class="Review-table-header">
                             <tr>
                                 <td>
                 	게시글번호                  
                                 </td> 
-                                <td class="Review-table-title" >                               
+                                <td>                               
                                     제목
                                 </td>
                                 <td >
@@ -68,7 +69,7 @@
 						<c:forEach items="${reviewList}" var="list">
 						<tr>
 							<td>${list.ctg_id}</td>
-							<td><a href="01_eventView.do?ctg_id=${list.ctg_id}&c_id=${list.c_id}" >${list.c_title }</a></td>
+							<td><a href="02_reviewView.do?ctg_id=${list.ctg_id}&c_id=${list.c_id}" >${list.c_title }</a></td>
 							<td>${list.c_date }</td>
 							<td>${list.u_id }</td>
 							<td>${list.c_cnt }</td>							

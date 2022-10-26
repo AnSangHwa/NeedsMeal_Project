@@ -100,12 +100,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="list-group-collapse sub-men">
+                                   <div class="list-group-collapse sub-men">
                                         <a class="list-group-item commu list-group-item-action" href="#sub-men3" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men3">HOT</a>
                                         <div class="collapse" id="sub-men3" data-parent="#list-group-men">
                                             <div class="list-group">
-                                                <a href="#" class="list-group-item list-group-item-action"> 베스트상품 </a>
-                                                <a href="#" class="list-group-item list-group-item-action"> 신메뉴 </a>
+                                                <a href="01_bestMealList.do" class="list-group-item list-group-item-action"> 베스트상품 </a>
+                                                <a href="01_newMealList.do" class="list-group-item list-group-item-action"> 신메뉴 </a>
                                             </div>
                                         </div>
                                     </div>

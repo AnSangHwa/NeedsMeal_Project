@@ -30,6 +30,7 @@ public class MealVO {
     private int i_price; 			// 가격    
     private String i_date; 			// 생성일/수정일
 	private int cart_cnt;			// 카트에 들어가는 vo테이블의 숫자
+	private int all_price;			// 카트의 들어가는 총액
     /*
 	    카테코리 코드
 	    총 4자리로 구성

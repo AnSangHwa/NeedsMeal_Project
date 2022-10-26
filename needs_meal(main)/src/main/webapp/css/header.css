@@ -44,3 +44,19 @@ nav.navbar.bootsnav li.dropdown a.dropdown-toggle:before{
         margin-left: 50px;
 		
     }
+
+
+
+
+.headerColor a {
+    font-size: 15px;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.headerColor{
+    background-image: url(../images/헤더상단이미지/헤더상단이미지.png);
+    background-size: 1550px;
+    background-position: 50% 50%;
+    
+}

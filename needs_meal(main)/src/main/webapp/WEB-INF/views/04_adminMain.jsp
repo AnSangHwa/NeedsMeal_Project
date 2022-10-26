@@ -18,12 +18,15 @@
             <div class="page_element_buttom">
                  <a href="04_adminMealKitAdd.do"><input class="btn_mealkit_management" type="button" value="밀키트 추가"></input></a>
                 <a href="04_adminItemAdd.do"><input class="btn_material_management" type="button" value="재료 추가"></input></a>
-                 <a href="04_adminEventadd.do"><input class="btn_customer_question_viewing" type="button" value="이벤트 작성"></input></a>
+                 <a href="04_adminEventManage.do"><input class="btn_customer_question_viewing" type="button" value="이벤트 관리"></input></a>
             </div>
             <div class="page_element_buttom">
                  <a href="04_adminMealKitManage.do"><input class="btn_mealkit_management" type="button" value="밀키트 관리"></input></a>
                 <a href="04_adminItemManage.do"><input class="btn_material_management" type="button" value="재료 수정"></input></a>
                 <a href="04_adminQnAList.do"><input class="btn_customer_question_viewing" type="button" value="고객문의보기"></input></a>
+            </div>
+            <div class="page_element_buttom">
+				<a href="04_admindeliveryManage.do"><input class="btn_mealkit_management" type="button" value="배송관리"></input></a>
             </div>
         </div>
     </section>
